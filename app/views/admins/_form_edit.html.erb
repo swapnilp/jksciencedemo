@@ -1,0 +1,26 @@
+<div id="show_data" class="span10">
+  <%= form_for @admin, :url => admin_path(@admin), :method => :put, :remote => true,  :html => { :class => "form-horizontal", :id => "admin_subject" } do |f| %>
+  <%- if @admin.errors.any? %>
+  <%- @admin.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+  <table width="100%" class="table">
+    <tr>
+      <td width="20%">Admin Name</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= f.text_field :phone_number %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= @admin.email %></td>
+    </tr>
+  </table>
+  <%= f.submit "update", :class => 'btn btn-large' %>
+  
+  <%= link_to "Back", admin_path(@admin), :class => "btn btn-large", :id => "edit_back_#{@admin.id}", :remote => true %>
+  <% end %>
+</div>

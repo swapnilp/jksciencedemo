@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <%- if @score >= 80 %>
+    <h1>Congrgulation you scored <%= "#{@score}" %>%</h1>
+    <%- elsif @score.between?(60,79) %>
+    <h1>Revise your basic concept  you scored <%= "#{@score}" %>%</h1>
+    <%- else %>
+    <h1>Work Hard you scored <%= "#{@score}" %></h1>
+    <% end %>
+
+    <p>Student Name - <%= "#{@mark.student.name}" %></p>
+    <p>Mark - <%= "#{@mark.mark}" %></p>
+    <p>Time - <%= "#{@mark.created_at}" %></p>
+  </body>
+</html>

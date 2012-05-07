@@ -1,0 +1,1 @@
+$("#teacher_show_<%= @student.id %>").replaceWith("<%= escape_javascript(render(:partial => 'form_edit'))%>");

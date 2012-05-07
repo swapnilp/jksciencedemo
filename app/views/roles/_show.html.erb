@@ -1,0 +1,9 @@
+<div id=<%= "role_show_#{ @role.id}" %> >
+  <div>
+    <span class="row"><%= "Role    :      #{@role.name}" %></span>
+  </div>
+  <div class="summary_contain">
+    <%= link_to "Edit", edit_role_path(@role), :class => "btn btn-large", :id => @role.id, :remote => true %>
+    <%= link_to "Delete", role_path(@role), :method => :delete, :class => "btn btn-large",:remote => true, :confirm => "Are you sure?" %>
+  </div>
+</div>

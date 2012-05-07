@@ -1,0 +1,14 @@
+<div id="model_new">
+<%= form_for @subject, :method => :post, :remote => true, :html => { :class => "form-horizontal" } do |f| %>
+<%- if @subject.errors.any? %>
+  <%- @subject.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+<span class="row"><label>Subject Name
+    <%= f.text_field :name %>
+</lable>
+</span>
+  <%= f.submit "Save", :id => 'save_subject_form', :class => 'btn' %>
+  <% end %>
+</div>

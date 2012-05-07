@@ -1,0 +1,8 @@
+<div id="show_data" class="span10">
+  <div id="questions_index">
+    <%= render :partial => "index" %>
+  </div>
+  <div class="summary_contain">
+    <%= link_to "Add Question", new_subject_chapter_topic_question_path(@subject_id, @chapter_id, @topic_id), :class => "btn btn-primary btn-large", :remote => true %>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+class Batchtest < ActiveRecord::Base
+  attr_accessible :batch_id, :jktest_id, :start_test_date, :end_test_date, :attempt
+  
+  #association
+  belongs_to :batch
+  belongs_to :jktest
+  #has_many :solvedtests
+  has_many :marks
+  has_many :testattempts
+  
+  #validation
+  validates_associated :marks
+  validates_associated :testattempts
+  validates :batch_id, :presence => true
+  validates :jktest_id, :presence => true
+  #validates_associated :solvedtests
+  validates :start_test_date, :presence => true
+  validates :end_test_date, :presence => true
+  validates :attempt, :presence => true
+  
+  #callback
+  before_validation :validate_jktest, :validate_batch, :validate_date
+
+  def validate_jktest
+    errors.add(:jktest_id, 'Test not presence') if Jktest.find_by_id( self[:jktest_id] ) == nil
+  end
+
+  def validate_batch
+    errors.add(:batch_id, 'Batch not presence') if Batch.find_by_id( self[:batch_id] ) == nil
+  end
+  
+  def validate_date
+    batch = Batch.select('start_date,end_date').find_by_id(self[:batch_id])
+    #errors.add(:start_test_date, 'Date not in batch schedule') if batch[:start_date] > self[:start_test_date] || batch[:end_date] < self[:end_test_date]
+    errors.add(:start_test_date, "can't less than end date ") if self[:start_test_date]  > self[:end_test_date]
+  end
+end

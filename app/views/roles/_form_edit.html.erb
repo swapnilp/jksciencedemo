@@ -1,0 +1,15 @@
+<div id="model_new">
+  <%= form_for @role, :url => role_path(@role), :method => :put, :remote => true,  :html => { :class => "form-horizontal", :id => "role_subject" } do |f| %>
+  <%- if @role.errors.any? %>
+  <%- @role.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+  <span class="row"><label>Role Name
+      <%= f.text_field :name %>
+</lable>
+</span>
+<%= f.submit "update", :class => 'btn btn-large' %>
+
+<% end %>
+</div>

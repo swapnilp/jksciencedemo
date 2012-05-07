@@ -1,0 +1,16 @@
+<%= form_for @chapter, :url => subject_chapters_path(@subject_id, @chapter.id), :method => :put, :remote => true do |f|%>
+<span class="row"><label class="control-label">Subject_id
+    <%= f.text_field :subject_id, :class => 'input-large'%>
+</lable>
+</span>
+<span class="row"><label class="control-label">Chapter No
+    <%= f.text_field :chapter_number, :class => 'input-large'%>
+</lable>
+</span>
+<span class="row"><label class="control-label">Name
+    <%= f.text_field :name, :class => 'input-large'%>
+</lable>
+</span>
+
+<%= f.submit "update", :class => 'btn btn-large' %>
+<% end %>

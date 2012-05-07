@@ -1,0 +1,19 @@
+<h2>Forums</h2>
+<table width="100%" class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="20%">Index</th>
+      <th width="80%">Forum</th>
+    </tr>
+  </thead>
+  <%- @forums.each_with_index do |forum,index| %>
+  <tr>
+    <td>
+      <%= "#{index + 1}" %>
+    </td>
+    <td>
+      <%= link_to forum.title, subject_chapter_topic_forum_path(forum.topic.chapter.subject.id, forum.topic.chapter.id, forum.topic.id, forum), :remote => :true %>
+    </td>
+  </tr>
+  <% end %>
+</table>

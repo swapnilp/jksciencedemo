@@ -1,0 +1,32 @@
+<div id="model_new">
+  <%= form_for @teacher, :method => :post, :remote => true,  :html => { :class => "form-horizontal", :id => "new_teacher" } do |f| %>
+  <%- if @teacher.errors.any? %>
+  <%- @teacher.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+  <table width="100%" CELLPADDING="4">
+    <tr>
+      <td width="30%">Name</td>
+      <td><%= f.text_field :name, :class => 'input-large'%></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= f.text_field :phone_number, :class => 'input-large' %></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td>Subject</td>
+      <td><%= f.select :subject_id, options_from_collection_for_select(@subjects, "id", "name", "#{@teacher.subject_id}")  %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+  </table>
+  <%= f.submit "Save", :id => 'save_teacher_form', :class => 'btn' %>
+  <% end %>
+</div>

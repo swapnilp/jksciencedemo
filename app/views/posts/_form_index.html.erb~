@@ -1,0 +1,11 @@
+<div id="show_posts" class="span10">
+  <h2>Posts</h2>
+  <%- @posts.each_with_index do |post, index| %>
+  <div id=<%= "post_#{post.id}" %> class="summary-contain">
+    <span class="span8"><%= "#{index + 1} "+"  #{post.post}" %></span>
+    <%- if current_user.role.name == "Admin" %>
+    <span class="span2">1231321asdasd</span>
+    <%- end %>
+  </div>
+  <%- end %>
+</div>

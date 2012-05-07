@@ -1,0 +1,11 @@
+<div id="test_attempts">
+  <table width="100%">
+  <%- @testattempts.each_with_index do |testattempt, index| %>
+  <tr>
+    <td><%= "#{index}" %></td>
+    <td><%= "#{testattempt.created_at}"%></td>
+    <td><%= link_to 'Remove', batch_batchtest_testattempt(@batch_id, @batchtest_id,testattempt), :method => :put, :remote => :true %></td>      
+  </tr>
+  <% end %>
+  </table>
+</div>

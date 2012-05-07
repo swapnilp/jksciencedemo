@@ -1,0 +1,55 @@
+<div id="show_data" class="span10">
+  <div class="btn-group span3">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Select Subject
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <!-- dropdown menu links -->
+      <%- @subjects.each do |subject|%>
+      <li><%= link_to "#{subject.name}",  "/subject/#{subject.id}/questions", :remote => :true %></li>
+      <%- end %>
+    </ul>
+  </div>
+
+  <%- if defined? @chapters %>
+  <div class="btn-group span3">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Select Chapter
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <!-- dropdown menu links -->
+      <%- @chapters.each do |chapter|%>
+      <li><%= link_to "#{chapter.name}",  "/subject/#{@subject.id}/chapter/#{chapter.id}/questions", :remote => :true %></li>
+      <%- end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%- if defined? @topics %>
+  <div class="btn-group span3">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Select Chapter
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <!-- dropdown menu links -->
+      <%- @topics.each do |topic|%>
+      <li><%= link_to "#{topic.name}",  "/subject/#{@subject.id}/chapter/#{@chapter.id}/topic/#{topic.id}/questions", :remote => :true %></li>
+      <%- end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <%- if defined? @questions %>
+  <div id="filtered_question" class="span10">
+    <h3><%= "#{@subject.name} >>" if defined? @subject %> 
+      <%= "#{@chapter.name} >>" if defined? @chapter %>
+      <%= "#{@topic.name} >>" if defined? @topic %>
+    </h3>
+    <%= render 'index' %>
+  </div>
+  <% end %>
+</div>

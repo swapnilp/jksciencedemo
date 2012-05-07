@@ -1,0 +1,1 @@
+$("#subject_edit_<%= @subject.id %>").replaceWith("<%= escape_javascript(render(:partial => 'show'))%>");

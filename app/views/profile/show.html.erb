@@ -1,0 +1,97 @@
+<div id="show_data" class="span10">
+  <%- if current_user.role.name == "student" %>
+  <div id="profile">
+    <h2>Profile</h2>
+    <span><%= "Name  - #{@student.name}" %></span><br />
+    <span><%= "Address  - #{@student.address}" %></span><br />
+    <span><%= "Phone Number  - #{@student.phone_number}" %></span><br />
+    <span><%= "Group  - #{@student.group}" %></span><br />
+    <span><%= "Std  - #{@student.standerd}" %></span><br />
+    <span><%= "Email  - #{@student.email}" %></span><br />
+    <span><%= "parent Contact  - #{@student.parent_contact}" %></span><br />
+    <%= link_to 'edit', edit_profile_path(current_user.employee_id), :class => 'btn btn-primary', :remote => :true  %>
+    <%= link_to 'Change password', change_password_path, :class => 'btn btn-primary', :remote => :true  %>
+  </div>
+  <div id="batches">
+    <h2>Batche Information</h2>
+    <%- @batchs.each_with_index do |batch, index| %>
+    <span><%= "#{index + 1 }" %></span>
+    <span><%= "#{batch.description}" %></span><br />
+    <% end %>
+  </div>
+  <div id="result">
+    <h2>Results</h2>
+    <table width="100%" class="table table-striped">
+      <thead>
+	<tr>
+	  <th>Batch</th>
+	  <th>Test Name</th>
+	  <th>Chapters</th>
+	  <th>marks</th>
+	  <th>Date and time</th>	  
+	</tr>
+      </thead>
+      <%- @marks.each_with_index do |mark| %>
+      <tr>
+	<td><%= "#{mark.batchtest.batch.description}   " %></td>
+	<td><%= "#{mark.batchtest.jktest.name}   " %></td>
+	<td></td>
+	<td><%= "#{mark.mark}"  %></td>
+	<td><%= "#{mark.created_at}"%></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <%- elsif current_user.role.name == "Admin" %>
+  <div id="profile">
+    <h2>Profile</h2>
+    <table width="60%" class="table table-striped">
+      <tr>
+	<td width="20%">Name</td>
+	<td><%= "#{@admin.name}" %></td>
+      </tr>
+      <tr>
+	<td>Phone Number</td>
+	<td><%= "#{@admin.phone_number}" %></td>
+      </tr>
+      <tr>
+      <td>Email</td>
+      <td><%= "#{@admin.email}" %></td>      
+      </tr>
+    </table>
+      <%= link_to 'edit', edit_profile_path(current_user.employee_id), :class => 'btn btn-primary', :remote => :true  %>
+    <%= link_to 'Change password', change_password_path, :class => 'btn btn-primary', :remote => :true  %>
+  </div>
+  <%- elsif current_user.role.name == "teacher" %>
+  <div id="profile">
+    <h2>Profile</h2>
+    <table width="60%" class="table table-striped">
+      <tr>
+	<td width="20%">Name</td>
+	<td><%= "#{@teacher.name}" %></td>
+      </tr>
+      <tr>
+	<td>Phone Number</td>
+	<td><%= "#{@teacher.phone_number}" %></td>
+      </tr>
+      <tr>
+      <tr>
+	<td>Address</td>
+	<td><%= "#{@teacher.address}" %></td>
+      </tr>
+      <tr>
+      <tr>
+	<td>Subject</td>
+	<td><%= "#{@teacher.subject.name}" %></td>
+      </tr>
+      <tr>
+      <td>Email</td>
+      <td><%= "#{@teacher.email}" %></td>      
+      </tr>
+    </table>
+      <%= link_to 'edit', edit_profile_path(current_user.employee_id), :class => 'btn btn-primary', :remote => :true  %>
+    <%= link_to 'Change password', change_password_path, :class => 'btn btn-primary', :remote => :true  %>
+  </div>
+
+  <% end %>
+</div>

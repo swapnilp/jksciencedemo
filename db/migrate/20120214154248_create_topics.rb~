@@ -1,0 +1,10 @@
+class CreateTopics < ActiveRecord::Migration
+  def change
+    create_table :topics do |t|
+      t.references :chapter
+      t.string :name, :null => false
+      t.integer :priority, :null => false, :default => 2
+      t.timestamps
+    end
+  end
+end

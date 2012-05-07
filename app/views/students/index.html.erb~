@@ -1,0 +1,13 @@
+<script>
+jQuery(function($) {
+  $('#myModal').on('shown', function () {
+  $.get("/students/new");
+  $("#modal_heading").replaceWith("<h3>New Student</h3>");
+  });
+})
+</script>
+<h2 class="demoHeaders">Students</h2>
+<%= render 'form_index' %>
+<div class="span3 summary_contain">
+  <a id="add_student" data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Add Student</a>
+</div>

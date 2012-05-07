@@ -1,0 +1,29 @@
+<div id="show_data" class="span10">
+  <h2 class="demoHeaders">Students</h2>
+  <table width="100%" class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Student Name</th>
+        <th>Gorup</th>
+        <th>Contact</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+    <%- @students.each_with_index do |student, index|%>
+    <tr>
+      <td><%= "#{index + 1}" %></td>
+      <td><%= link_to "#{student.name}", student_path(student), :remote => :true %></td>
+      <td><%= "#{student.group}" %></td>
+      <td><%= "#{student.phone_number}" %></td>
+      <td><%= link_to "Edit", edit_student_path(student), :remote => true %></td>
+      <td><%= link_to "Delete", student_path(student), :method => :delete, :remote => true, :confirm => "Are you sure?" %></td>
+
+    </tr>
+    <%- end %>
+  </table>
+  <div class="span3 summary_contain">
+    <%= link_to "Add Student", new_student_path, :class => "btn btn-primary btn-large", :remote => true %>
+  </div>
+</div>

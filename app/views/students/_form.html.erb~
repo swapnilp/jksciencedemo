@@ -1,0 +1,39 @@
+<div>
+<%= form_for @student, :url => student_path(@student), :method => :put, :html => { :class => "form-horizontal", :id => "edit_student" } do |f| %>
+<span class="row"><label class="control-label">Email  
+    <%= f.text_field :email, :class => 'input-large'%>
+</lable>
+</span>
+
+<span class="row"><label>Address
+    <%= f.text_field :address, :class => 'input-large' %>
+</lable>
+</span>
+
+
+<span class="row"><label>phone_number
+    <%= f.text_field :phone_number %>
+</lable>
+</span>
+<span class="row"><label>group
+    <%= f.text_field :group %>
+</lable>
+</span>
+
+<span class="row"><label>standerd
+    <%= f.text_field :standerd %>
+</lable>
+</span>
+
+<span class="row"><label>ssc_marks
+    <%= f.text_field :ssc_marks %>
+</lable>
+</span>
+
+<span class="row"><label>parent_contact
+    <%= f.text_field :parent_contact %>
+</lable>
+</span>
+
+<% end %>
+</div>

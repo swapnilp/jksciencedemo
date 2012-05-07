@@ -1,0 +1,7 @@
+<div id="show_data" class="span10">
+  <div id="filter_question">
+  </div>
+  <div id="questions_index">
+    <%= render :partial => "index" %>
+  </div>
+</div>

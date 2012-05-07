@@ -1,0 +1,8 @@
+class CreateTestattempts < ActiveRecord::Migration
+  def change
+    create_table :testattempts do |t|
+
+      t.timestamps
+    end
+  end
+end

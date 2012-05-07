@@ -1,0 +1,45 @@
+<div id="model_new">
+  <%= form_for @student, :method => :post, :remote => true,  :html => { :class => "form-horizontal", :id => "new_student" } do |f| %>
+  <%- if @student.errors.any? %>
+  <%- @student.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+  <table width="100%" CELLPADDING="6">
+    <tr>
+      <td width="20%">Name</td>
+      <td><%= f.text_field :name, :class => 'input-large'%></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= f.text_field :email, :class => 'input-large'%></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><%= f.text_field :address, :class => 'input-large' %></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= f.text_field :phone_number %></td>
+    </tr>
+    <tr>
+      <td>Group</td>
+      <td><%= f.text_field :group %></td>
+    </tr>
+    <tr>
+      <td>Standered</td>
+      <td><%= f.text_field :standerd %></td>
+    </tr>
+    <tr>
+      <td>SSC Marks</td>
+      <td><%= f.text_field :ssc_marks %></td>
+    </tr>
+    <tr>
+      <td>Parent Contact</td>
+      <td><%= f.text_field :parent_contact %></td>
+    </tr>
+  </table>
+  <%= f.submit "Save", :id => 'save_student_form', :class => 'btn' %>
+</fieldset>
+  <% end %>
+</div>

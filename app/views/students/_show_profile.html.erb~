@@ -1,0 +1,11 @@
+  <div id="profile">
+    <h2>Profile</h2>
+    <span><%= "Name  - #{@student.name}" %></span><br />
+    <span><%= "Address  - #{@student.address}" %></span><br />
+    <span><%= "Phone Number  - #{@student.phone_number}" %></span><br />
+    <span><%= "Group  - #{@student.group}" %></span><br />
+    <span><%= "Std  - #{@student.standerd}" %></span><br />
+    <span><%= "Email  - #{@student.email}" %></span><br />
+    <span><%= "parent Contact  - #{@student.parent_contact}" %></span><br />
+    <%= link_to 'edit', edit_profile_path(current_user.employee_id), :class => 'btn btn-primary', :remote => :true  %>
+  </div>

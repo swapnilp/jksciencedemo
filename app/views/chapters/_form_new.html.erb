@@ -1,0 +1,22 @@
+<div id="model_new">
+  <%= form_for @chapter, :url => subject_chapters_path(@subject_id, @chapter), :method => :post, :remote => true do |f| %>
+  <%- if @chapter.errors.any? %>
+  <%- @chapter.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+  <table>
+    <tr>
+      <td> Chapter No </td>
+      <td><%= f.text_field :chapter_number, :class => 'input-large'%></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td><%= f.text_field :name, :class => 'input-large'%></td>
+    </tr>
+    <tr>
+      <td><%= f.submit "create", :class => 'btn btn-large' %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>

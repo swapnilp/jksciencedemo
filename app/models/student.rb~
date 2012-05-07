@@ -1,0 +1,22 @@
+class Student < ActiveRecord::Base
+  attr_accessible :name, :phone_number, :address, :email, :user_id, :parent_contact, :group
+
+  #association
+
+  #has_many :mark
+  
+  #validations  
+  validates :name, :presence => true
+  validates :phone_number, :presence => true, :format => { :with => /\A[0-9]*\z/,
+    :message => "Only number valide" }
+  validates :address, :presence => true
+  validates :group, :presence => true, :exclusion => { :in => %w(pcb pcm pcmb),
+    :message => "gooup in %{value} is reserved." }
+  validates :email, :presence => true,:format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+    :message => "Email not valide" }
+  validates :parenet_contact, :presence => true, :format => { :with => /\A[0-9]{10}\z/,
+    :message => "Only numbers allowed" }
+
+  
+  #callback
+end

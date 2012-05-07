@@ -1,0 +1,31 @@
+<div id="show_data" class="span10">
+  <div>
+    <table width="40%" class="table">
+      <tr>
+	<td width="30%">Name</td>
+	<td><%= "#{@teacher.name}" %></td>
+      </tr>
+      <tr>
+	<td>Phone Number</td>
+	<td><%= "#{@teacher.phone_number}" %></td>
+      </tr>
+      <tr>
+	<td>Address</td>
+	<td><%= "#{@teacher.address}" %></td>
+      </tr>
+      <tr>
+	<td>Subject</td>
+	<td><%= "#{@teacher.subject.name}" %></td>
+      </tr>
+      <tr>
+	<td>Email</td>
+	<td><%= "#{@teacher.email}" %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="summary_contain">
+    <%= link_to "Edit", edit_teacher_path(@teacher), :class => "btn btn-large", :id => @teacher.id, :remote => true %>
+    <%= link_to "Delete", teacher_path(@teacher), :method => :delete, :class => "btn btn-large", :remote => true, :confirm => "Are you sure?" %>
+    <%= link_to "Back", teachers_path, :method => :get, :class => "btn btn-large", :remote => true %>
+  </div>
+</div>

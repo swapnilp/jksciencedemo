@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Guidance Academy</title>
+    <%= stylesheet_link_tag "application" %>
+  </head>
+  
+  <body>
+    <div class="top-strip"></div>
+    <div class="wrapper">
+      <div class="header">
+	<div class="logo"><img src="assets/logo.jpg"  title="Guidance Academy"/></div>
+	<div class="navi-wrapper">
+	  <div class="search-bg">
+	    <!--<div class="search-text">Search:</div>
+		<div><input type="text" class="search-input" /></div>
+		<div class="go-btn"><img src="images/go.jpg" /></div>-->
+	  </div>
+	  <div class="navi-bg">
+	    <ul>
+	      <li><a href="#" title="Home">Home</a></li>
+	      <li><a href="#" title="Calendar">Calendar</a></li>
+	      <li><a href="/profile/1" title="About us">Online Examination</a> </li>
+	      <li><a href="#" title="Contact us">Contact Us</a></li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+      <div class="banner"><img src="assets/banner.jpg" /></div>
+      <div class="box-one">
+	<h3>About our Academy</h3>
+	<div class="box-one-img"><img src="assets/one.jpg" /></div>
+	<div class="box-one-text"><strong>J.K.SCIENCE ACADEMY</strong> ,formerly known as a J.K.CLASSES,ISLAMPUR, a brain child of madam SANDHYA J. PATIL , was originated about two decades ago.She herself is a well known faculty in BIOLOGY</div>
+	<div class="read-more"><a href="#">Read More >></a></div>
+      </div>
+      <div class="box-one">
+	<h3>Why to join us</h3>
+	<div class="box-one-img"><img src="assets/two.jpg" /></div>
+	<div class="box-one-text"><strong>While launching this academy</strong>,the main purpose kept in mind and practice,was to avail guidance to all the students with proper attitude so that they might face with full confidence the entrance exams of IIT-JEE \</div>
+	<div class="read-more"><a href="#">Read More >></a></div>
+      </div>
+      <div class="box-one">
+	<h3>Our Results</h3>
+	<div class="box-one-img"><img src="assets/three.jpg" /></div>
+	<div class="box-one-text"><table width="100%">
+	    <tr>
+	      <td>* Sanket Garud</td><td>BJ medical college</td><td>91%</td>
+	    </tr>
+	    <tr>
+	      <td>* Sanket Garud</td><td>BJ medical college</td><td>91%</td>
+	    </tr>
+	    <tr>
+	      <td>* Sanket Garud</td><td>BJ medical college</td><td>91%</td>
+	    </tr>
+	    <tr>
+	      <td>* Sanket Garud</td><td>BJ medical college</td><td>91%</td>
+	    </tr>
+	</table></div>
+	<div class="read-more"><a href="#">Read More >></a></div>
+      </div>
+      <div class="box-one">
+	<h3>Notifications</h3>
+	<div class="box-one-img"><img src="assets/four.jpg" /></div>
+	<div class="box-one-text"><strong>Dummy text dummy</strong> text dummy text dummy text dummy text dummy text dummy text dummy text</div>
+	<div class="read-more"><a href="#">Read More >></a></div>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="box-two">
+	<h3>News</h3>
+	<div class="box-two-text">
+	  Dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text Dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text 
+	</div>
+	<div class="read-more-two"><a href="#">Read More >></a></div>
+      </div>
+      <!--<div class="testmonials-img-one"><img src="images/testimonials.jpg" width="157" height="117" /></div>-->
+      <!--<div class="box-three">
+	  <h3>Our New Courses</h3>
+	  <div class="box-three-text">Dummy text dummy text dummy text dummy text 
+	    <div class="read-more-three"><a href="#">Robert Des</a></div>
+	  </div>
+
+      </div>-->
+      <div style="clear:both;"></div>
+    </div>
+    <div class="footer-wrapper">
+      <div class="footer-navi">
+	<ul>
+	  <li><a href="\">Home</a></li>
+	  <li>|</li> 
+	  <li><a href="#">About us</a></li>
+	  <li>|</li>
+	  <li><a href="#">Calendar</a></li>
+	  <li>|</li>
+	  <li><a href="#">Cotact Us</a></li>
+	</ul>
+	<div class="facebook">
+	  <ul>
+	    <li><a href="#">Disclaimer:</a> </li>
+	    <li><a href="#">Sitemap:</a></li>
+	    <li><a href="#"><img src="assets/facebook.jpg" class="twitter" border="0" /></a></li>
+	    <li><a href="#"><img src="assets/twitter.jpg" border="0" class="twitter" /></a></li>
+	    <li style="margin-left:80px;"><strong>Powered By <a href="mailto:swapnil.patil04@gmail.com" title="swapnil.patil04@gmail.com">Swapnil Patil</a></strong></li>
+	  </ul>
+	</div>
+	<div style="clear:both;"></div>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
+</html>

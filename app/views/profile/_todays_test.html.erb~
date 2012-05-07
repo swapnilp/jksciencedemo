@@ -1,0 +1,11 @@
+<div id="show_data" class="span10">
+  <%- @batchtests.each_with_index do |batchtest, index| %>
+  <%= "#{index + 1}  ;" %>
+  <%= "batchid - #{batchtest.batch_id}    ;" %>
+  <%= "jktest  - #{batchtest.jktest.name}" %>
+  <%= "end date  - #{batchtest.end_test_date}" %>
+  <%= link_to 'Start Test', "/batch/#{@batch_id}/student/#{@student_id}/jktest/#{@jktest_id}" %><br />
+
+  <% end %> 
+  
+</div>

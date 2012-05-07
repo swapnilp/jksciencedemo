@@ -1,0 +1,40 @@
+<div id="show_data" class="span10">
+<h2><%= "#{@student.name}" %></h2>
+<div>
+  <table width="100%" class="table">
+    <tr>
+      <td width="30%">Email</td>
+      <td><%= "#{@student.email}" %></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><%= "#{@student.address}" %></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= "#{@student.phone_number}" %></td>
+    </tr>
+    <tr>
+      <td>Group</td>
+      <td><%= "#{@student.group}" %></td>
+    </tr>
+    <tr>
+      <td>Standered</td>
+      <td><%= "#{@student.standerd}" %></td>
+    </tr>
+    <tr>
+      <td>SSC Marks</td>
+      <td><%= "#{@student.ssc_marks}" %></td>
+    </tr>
+    <tr>
+      <td>Parent Contact</td>
+      <td><%= "#{@student.parent_contact}" %></td>
+    </tr>
+  </table>
+</div>
+<div class="summary_contain">
+  <%= link_to "Edit", edit_student_path(@student), :class => "btn btn-large", :id => @student.id, :remote => true %>
+  <%= link_to "Delete", student_path(@student), :method => :delete, :class => "btn btn-large", :remote => true, :confirm => "Are you sure?" %>
+  <%= link_to "Back", students_path, :class => "btn btn-large", :remote => true %>
+</div>
+</div>

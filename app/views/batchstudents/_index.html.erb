@@ -1,0 +1,26 @@
+<div id="show_data" class="span10">
+  <h2>Batch Student</h2>
+  <table width="100%" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Student Name</th>
+        <th>report</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+    <%- @batchstudents.each_with_index do |batchstudent,index| %>
+    <tr>
+      <td><%= "#{index+1}" %></td>
+      <td><%= batchstudent.student.name %></td>
+      <td><%= batchstudent.report %> <%= link_to 'edit', edit_batch_batchstudent_path(@batch_id, batchstudent), :method => :get, :remote => true %></td>
+      <td><%= link_to 'Destroy', batch_batchstudent_path(@batch_id, batchstudent), confirm: 'Are you sure?', :method => :delete, :remote => true %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <div class="span3 summary_contain" width="100%">
+    <%= link_to "Add Student", new_batch_batchstudent_path(@batch_id), :class => "btn btn-primary btn-large" , :remote => :true %>
+    <%= link_to "back", batchs_path(), :class => "btn btn-primary btn-large" , :remote => :true %>
+  </div>
+</div>

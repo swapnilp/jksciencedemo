@@ -1,0 +1,55 @@
+<script type="text/javascript">
+translateOnLoad=false;
+function display(str, location) {
+  var outnode = document.getElementById(location);
+  var n = outnode.childNodes.length;
+  for (var i=0; i<n; i++)
+    outnode.removeChild(outnode.firstChild);
+  outnode.appendChild(document.createTextNode(str));
+  AMprocessNode(outnode);
+}
+</script>
+
+<div class="span10">
+  <%= form_tag("/batch_test/#{@batchtest_id}/student/#{@student_id}/jktest/#{@jktest_id}/result", :method => :post ) do  -%>
+    <%- @testquestions.each_with_index do |testquestion, index| %>
+    <div class="summary_contain span10">
+      <input id=<%= "que_check_#{index + 1}" %> type="checkbox"><%= "#{index+1}   -" %>
+      <span id=<%= "question_#{index + 1}" %>></span><br />
+      <%= radio_button_tag "answer[#{testquestion.question_id}]", 'a' %><span id=<%= "optiona_#{index + 1}" %>></span><br />
+      <%= radio_button_tag "answer[#{testquestion.question_id}]", 'b' %><span id=<%= "optionb_#{index + 1}" %>></span><br />
+      <%= radio_button_tag "answer[#{testquestion.question_id}]", 'c' %><span id=<%= "optionc_#{index + 1}" %>></span><br />
+      <%= radio_button_tag "answer[#{testquestion.question_id}]", 'd' %><span id=<%= "optiond_#{index + 1}" %>></span><br />
+      
+      <script>
+	display("<%= "#{testquestion.question.question}" %>", "<%= "question_#{index + 1}" %>");
+	display("<%= "#{testquestion.question.option_a}" %>", "<%= "optiona_#{index + 1}" %>");
+	display("<%= "#{testquestion.question.option_b}" %>", "<%= "optionb_#{index + 1}" %>");
+	display("<%= "#{testquestion.question.option_c}" %>", "<%= "optionc_#{index + 1}" %>");
+	display("<%= "#{testquestion.question.option_d}" %>", "<%= "optiond_#{index + 1}" %>");
+      </script>
+      <script type="text/javascript">
+	$(function(){
+	$('<%= "#que_check_#{index + 1}" %>').click(function(){
+	
+	// If checked
+	if ($('<%= "#que_check_#{index + 1}" %>').is(":checked"))
+	{
+	// check again the question
+	$('<%= "#question_link_#{index + 1}" %>').attr("class", "btn btn-warning");
+	}
+	else
+	{
+	//otherwise, change the color
+	$('<%= "#question_link_#{index + 1}" %>').attr("class", "btn");
+	}
+	});
+	});
+      </script>
+    </div>
+    <% end %>
+    <div class="span10">
+      <input type="submit">
+    </div>
+  <% end %>
+</div>

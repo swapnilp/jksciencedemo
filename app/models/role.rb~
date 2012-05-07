@@ -1,0 +1,11 @@
+class Role < ActiveRecord::Base  
+  attr_accessible :name
+
+  #association
+  has_many :user,  :dependent => :destroy  
+
+  #validation
+  validates_associated :user
+  validates :name, :presence => true  
+
+end

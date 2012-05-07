@@ -1,0 +1,13 @@
+<div id="show_data" class="span10">
+  <h2>Chapter <%= @chapter.name %></h2>
+  <div id=<%= "chapter_#{@chapter.id}" %> >
+    <script>
+      jQuery( function($){
+      $.get("<%= "/subjects/#{@subject_id}/chapters/#{@chapter.id}/topics" %>");
+      });
+    </script>
+  </div>
+  <div>
+    <%= link_to "back", subjects_path %>
+  </div>
+</div>

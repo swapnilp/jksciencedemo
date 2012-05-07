@@ -1,0 +1,2 @@
+$('#myModal').modal('hide');
+$("#chapter_<%= "#{@chapter_id}" %>").replaceWith("<%= escape_javascript(render(:partial => 'index'))%>");

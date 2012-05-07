@@ -1,0 +1,35 @@
+class Batch < ActiveRecord::Base
+  require 'date'
+  attr_accessible :description, :start_date, :end_date, :group, :incharge
+  
+  #association
+  belongs_to :user
+  #has_many :batchtest
+  has_many :jktest, :through => :batchtest
+  has_many :batchstudents
+  
+  #validation
+  validates_associated :jktest
+  #validates_associated :batchtest
+  validates_associated :batchstudents
+  validates :description, :presence => true
+  validates :start_date, :presence => true
+  validates :end_date, :presence => true
+  validates :group, :presence => true, :inclusion => { :in => %w(pcb pcm pcmb),
+    :message => "not valid group" }
+  validates :incharge, :presence => true
+  
+  #callback
+  before_validation :validate_date, :validate_user
+  
+  #validate dates 
+  def validate_date
+    errors.add(:start_date, 'not valide') if self[:start_date] < Date.today
+    errors.add(:end_date, 'must greater than start date') if self[:start_date] >= self[:end_date]
+  end
+
+  #function validates user is exist or not in user table
+  def validate_user
+    errors.add(:user_id, 'not presence') if User.find_by_id( self[:user_id] ) == nil
+  end
+end

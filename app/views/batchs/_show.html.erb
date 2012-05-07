@@ -1,0 +1,31 @@
+<div id="show_data" class="span10">
+  <h2><%= "#{@batch.description}" %></h2>
+  <table class="table" width="100%">
+    <tr>
+      <td>Description</td>
+      <td><%= "#{@batch.description}" %></td>
+    </tr>
+    <tr>
+      <td>Start Date</td>
+      <td><%= "#{@batch.start_date}" %></td>
+    </tr>
+    <tr>
+      <td>End Date</td>
+      <td><%= "#{@batch.end_date}" %></td>
+    </tr>
+    <tr>
+      <td>Group</td>
+      <td><%= "#{@batch.group}" %></td>
+    </tr>
+    <tr>
+      <td>Incharge</td>
+      <td><%= "#{@batch.incharge}" %></td>
+    </tr>
+  </table>
+  
+  <div class="summary_contain">
+    <%= link_to "Edit", edit_batch_path(@batch), :class => "btn btn-large", :id => @batch.id, :remote => true %>
+    <%= link_to "Delete", batch_path(@batch), :method => :delete, :class => "btn btn-large", :id => "delete_#{@batch_id}", :remote => true, :confirm => "Are you sure?" %>
+    <%= link_to "Back", batchs_path, :method => :get, :class => "btn btn-large", :remote => true %>
+  </div>
+</div>

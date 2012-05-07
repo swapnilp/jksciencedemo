@@ -1,0 +1,16 @@
+<div id="model_new">
+  <div id=<%= "subject_edit_#{@subject.id}" %>>
+    <%= form_for @subject, :url => subject_path(@subject), :method => :put, :remote => true,  :html => { :class => "form-horizontal", :id => "edit_subject" } do |f| %>
+    <%- if @subject.errors.any? %>
+    <%- @subject.errors.full_messages.each do |msg|%>
+    <%= "#{msg}" %><br />
+    <% end %>
+    <% end %>
+    <span class="row"><label>Subject Name
+	<%= f.text_field :name %>
+</lable>
+</span>
+<%= f.submit "update", :class => 'btn btn-large' %>
+<% end %>
+</div>
+</div>

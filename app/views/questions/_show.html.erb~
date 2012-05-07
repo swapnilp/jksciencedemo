@@ -1,0 +1,30 @@
+<script type="text/javascript">
+translateOnLoad=false;
+function display(str, location) {
+  var outnode = document.getElementById(location);
+  var n = outnode.childNodes.length;
+  for (var i=0; i<n; i++)
+    outnode.removeChild(outnode.firstChild);
+  outnode.appendChild(document.createTextNode(str));
+  AMprocessNode(outnode);
+}
+</script>
+
+<script type="text/javascript">
+display("<%= "#{@question.question}" %>", "question");
+display("<%= "#{@question.option_a}" %>", "optionA");
+display("<%= "#{@question.option_b}" %>", "optionB");
+display("<%= "#{@question.option_c}" %>", "optionC");
+display("<%= "#{@question.option_d}" %>", "optionD");
+</script>
+<div id="modal_new">
+  <span><h4>Question</h4><span id="question"></span></span>
+  <span><h4>Option A</h4><div id="optionA"></div></span>
+  <span><h4>Option B</h4><div id="optionB"></div></span>
+  <span><h4>Option C</h4><div id="optionC"></div></span>
+  <span><h4>Option D</h4><div id="optionD"></div></span>
+  <span><h4>Answer</h4><%= "#{@question.answer}" %></span>
+  <div class="summary-contain">
+    <%= link_to 'edit', edit_subject_chapter_topic_question_path(@subject_id, @chapter_id, @topic_id, @question), :remote => :true, :class => 'btn btn-primary ' %>
+  </div>
+</div>

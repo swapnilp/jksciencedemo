@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jkscience</title>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+    <script>
+      jQuery(function($) {
+      $('#myModal').on('hidden', function () {
+      $('#model_body').replaceWith("<div id='model_body' class='modal-body'><div id='model_new'></div></div>")
+      });
+      });
+    </script>
+    <!-- if user is login script is user to clear the active css class to left hand piles-->
+    <%- if user_signed_in? %>    
+    <script>
+      function clear_link(link) {
+      document.getElementById('my_profile_link').className = '';
+      <%- if ["Admin", "teacher"].include?(current_user.role.name)  %>
+      document.getElementById('subject_link').className = '';
+      <%- if current_user.role.name == "Admin" %>
+      document.getElementById('teacher_link').className = '';
+      document.getElementById('student_link').className = '';
+      document.getElementById('admin_link').className = '';
+      <% end %>
+      document.getElementById('user_link').className = '';
+      document.getElementById('batch_link').className = '';
+      document.getElementById('question_link').className = '';
+      document.getElementById('jktest_link').className = '';
+      document.getElementById('report_link').className = '';
+      <%- end%>
+      document.getElementById('forum_link').className = '';
+      <%- if current_user.role.name == "student" %>
+      document.getElementById('today_test_link').className = '';
+      <%- end %>
+      document.getElementById(link).className = 'active';
+      };
+    </script>
+    <%- end %>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+	<%= image_tag("logo.jpg") %>
+	<%- if user_signed_in? %>
+	<div class="pull-right">
+	  <strong><%= current_user.email%></strong>
+	  <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+	</div>
+	<% end %>
+      </div>
+      <div class="row-fluid">
+	<%- if user_signed_in?%>
+	<div class="span2">
+	      <ul class="nav nav-pills nav-stacked">
+		<li id="my_profile_link" class="active">
+		  <%= link_to 'My Profile', profile_path(current_user.id) , :method => :get, :onclick => 'clear_link("my_profile_link")', :remote => :true %>
+		</li>
+		<%- if ["Admin", "teacher"].include?(current_user.role.name)  %>
+		<li id="subject_link" ><%= link_to 'Subject', subjects_path , :onclick => 'clear_link("subject_link")', :remote => :true %></li>
+		<%- if current_user.role.name == "Admin" %>
+		<li id="teacher_link"><%= link_to 'Teacher', teachers_path, :onclick => 'clear_link("teacher_link")', :remote => :true %></li>
+		<li id="student_link"><%= link_to 'Student', students_path, :onclick => 'clear_link("student_link")', :remote => :true %></li>
+		<li id="admin_link"><%= link_to 'Admin', admins_path, :onclick => 'clear_link("admin_link")', :remote => :true %></li>
+		<li id="user_link"><%= link_to 'Users', users_path, :onclick => 'clear_link("user_link")', :remote => :true %></li>
+		<% end %>
+		<li id="batch_link"><%= link_to 'Batches', batchs_path ,:onclick => 'clear_link("batch_link")', :remote => :true %></li>
+		<li id="question_link"><%= link_to 'Questions', question_filter_question_path() ,:onclick => 'clear_link("question_link")', :remote => :true %></li>
+		<li id="jktest_link"><%= link_to 'Jktest', jktest_select_subject_path() ,:onclick => 'clear_link("jktest_link")', :remote => :true %></li>
+		<li id="report_link"><%= link_to 'Reports', reports_path() ,:onclick => 'clear_link("report_link")', :remote => :true %></li>
+		<%- end %>
+		<li id="forum_link"><%= link_to 'Forum', subject_filter_forum_path ,:onclick => 'clear_link("forum_link")', :remote => :true %></li>
+		<%- if current_user.role.name == "student" %>
+		<li id="today_test_link"><%= link_to 'Todays Test', todays_test_path ,:onclick => 'clear_link("today_test_link")', :remote => :true %></li>
+		<%- end %>
+	      </ul>
+	      <!--Sidebar content-->
+	  
+	</div>
+	<%- end %>
+	<div class="span10">
+	  <!-- do not change the div id show data it is used to show data in right sideof page-->
+	  <div id="show_data" class="span10">
+	    <%= yield %>
+	  </div>
+	</div>
+      </div>
+      <div class="footer-wrapper">
+	<div class="footer-navi">
+	  <ul>
+	    <li><a href="/">Home</a></li>
+	    <li>|</li> 
+	    <li><a href="#">About us</a></li>
+	    <li>|</li>
+	    <li><a href="#">Calendar</a></li>
+	    <li>|</li>
+	    <li><a href="#">Cotact Us</a></li>
+	  </ul>
+	  <div class="facebook">
+	    <ul>
+	      <li><a href="#">Disclaimer:</a> </li>
+	      <li><a href="#">Sitemap:</a></li>
+	      <li><a href="#"><%= image_tag("facebook.jpg", :class => 'twitter') %></a></li>
+	      <li><a href="#"><%= image_tag("twitter.jpg", :class => 'twitter') %></a></li>
+	      <li style="margin-left:80px;"><strong>Powered By <a href="mailto:swapnil.patil04@gmail.com" title="swapnil.patil04@gmail.com">Swapnil Patil</a></strong></li>
+	    </ul>
+	  </div>
+	  <div style="clear:both;"></div>
+	</div>
+    </div>
+    
+    <!-- Used for model dialog  Do not change model_heading and model_body id's  -->
+    <div id="myModal" class="modal hide">
+      <div class="modal-header">
+	<a class="close" data-dismiss="modal" >&times;</a>
+	<h3 id="modal_heading"></h3>
+      </div>
+      <div id="model_body" class="modal-body">
+	<div id="model_new">
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

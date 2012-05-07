@@ -1,0 +1,8 @@
+class CreateSolvedtests < ActiveRecord::Migration
+  def change
+    create_table :solvedtests do |t|
+
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,17 @@
+class Admin < ActiveRecord::Base
+  attr_accessible :name, :phone_number
+  
+  #association
+  belongs_to :user
+
+  #validation
+  validates :name, :presence => true
+  validates :phone_number, :presence => true, :format => { :with => /\A[0-9]{10,14}\Z/,
+  :message => 'only 10 to 12 digits allowed'}
+  
+  #callback
+  before_validation :validate_user
+  def validate_user
+    errors.add(:user_id, 'User not presence') if User.find_by_id( self[:user_id] ) == nil
+  end
+end

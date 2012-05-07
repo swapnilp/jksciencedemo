@@ -1,0 +1,13 @@
+<div id="show_data" class="span10">
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Select Subject
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <!-- dropdown menu links -->
+      <%- @student.each do |student|%>
+      <li><a href="#">Action</a></li>
+    </ul>
+  </div>
+</div>

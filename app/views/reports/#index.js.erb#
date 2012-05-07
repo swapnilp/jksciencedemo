@@ -1,0 +1,38 @@
+nit/helpers/reports_helper_test.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/reports.js.coffee
+      invoke    scss
+      create      app/assets/stylesheets/reports.css.scss
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/views/
+admins/        batchstudents/ chapters/      forums/        jktests/       passwords/     profile/       reports/       shared/        start_test/    subjects/      testquestions/ users/
+batchs/        batchtests/    devise/        home/          layouts/       posts/         questions/     roles/         solvedtests/   students/      teachers/      topics/        
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/models/
+ability.rb        batch.rb~         chapter.rb        jktest.rb         post.rb~          solvedtest.rb     subject.rb~       testquestion.rb   user.rb~          
+ability.rb~       batchstudent.rb   chapter.rb~       jktest.rb~        question.rb       solvedtest.rb~    teacher.rb        testquestion.rb~  
+admin.rb          batchstudent.rb~  forum.rb          mark.rb           question.rb~      student.rb        teacher.rb~       topic.rb          
+admin.rb~         batchtest.rb      forum.rb~         mark.rb~          role.rb           student.rb~       testattempt.rb    topic.rb~         
+batch.rb          batchtest.rb~     .gitkeep          post.rb           role.rb~          subject.rb        testattempt.rb~   user.rb           
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/views/testquestions/
+_form_new.html.erb   _form_new.html.erb~  _index.html.erb      _index.html.erb~     index.js.erb         index.js.erb~        new.js.erb           
+swapnil@swapnil:~/work/jkscience$ rails g controller Testattempts
+      create  app/controllers/testattempts_controller.rb
+      invoke  erb
+      create    app/views/testattempts
+      invoke  test_unit
+      create    test/functional/testattempts_controller_test.rb
+      invoke  helper
+      create    app/helpers/testattempts_helper.rb
+      invoke    test_unit
+      create      test/unit/helpers/testattempts_helper_test.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/testattempts.js.coffee
+      invoke    scss
+      create      app/assets/stylesheets/testattempts.css.scss
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/views/test
+testattempts/  testquestions/ 
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/views/testattempts/_form_index.html.erb
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/views/testattempts/_form_index.html.erb
+swapnil@swapnil:~/work/jkscience$ emacs -nw app/views/testattempts/_form_index.html.erb
+swapnil@swapnil:~/work/jkscience$ 

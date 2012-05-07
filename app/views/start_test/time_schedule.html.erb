@@ -1,0 +1,6 @@
+<div id="show_data" class="span10">
+  <h2>Not attempt before <%= "#{Time.now + (@last_attempt * 60)}" %></h2>
+  <div class="span10">
+    <%= link_to 'Continue', root_path, :class => 'btn btn-primary' %>
+  </div>  
+</div>

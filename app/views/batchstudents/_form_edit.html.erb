@@ -1,0 +1,7 @@
+<%= form_for @batchstudent, :url => batch_batchstudent_path(@batch_id, @batchstudent),:method => :put ,:remote => true do |f|%>
+<span class="row"><label class="control-label">Report
+    <%= f.text_field :report, :class => 'input-large'%>
+</lable>
+</span>
+<%= f.submit 'Save' %>
+<% end %>

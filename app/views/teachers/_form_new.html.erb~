@@ -1,0 +1,30 @@
+<div id="model_new">
+  <%= form_for @teacher, :method => :post, :remote => true,  :html => { :class => "form-horizontal", :id => "new_teacher" } do |f| %>
+  <span class="row"><label class="control-label">Name
+      <%= f.text_field :name, :class => 'input-large'%>
+</lable>
+</span>
+
+<span class="row"><label>phone number
+    <%= f.text_field :phone_number, :class => 'input-large' %>
+</lable>
+</span>
+
+
+<span class="row"><label>Address
+    <%= f.text_field :Address %>
+</lable>
+</span>
+<span class="row"><label>subject_id
+    <%= f.text_field :subject_id %>
+</lable>
+</span>
+
+<span class="row"><label>email
+    <%= f.text_field :email %>
+</lable>
+</span>
+
+  <%= f.submit "Save", :id => 'save_teacher_form', :class => 'btn' %>
+  <% end %>
+</div>

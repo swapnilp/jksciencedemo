@@ -1,0 +1,35 @@
+<script type="text/javascript">
+translateOnLoad=false;
+function display(str, location) {
+  var outnode = document.getElementById(location);
+  var n = outnode.childNodes.length;
+  for (var i=0; i<n; i++)
+    outnode.removeChild(outnode.firstChild);
+  outnode.appendChild(document.createTextNode(str));
+  AMprocessNode(outnode);
+}
+</script>
+
+<script type="text/javascript">
+display("<%= "#{@forum.title}" %>", "title");
+display("<%= "#{@forum.description}" %>", "description");
+</script>
+<div id="show_data" class="span10">
+  <span><h4>Title</h4><span id="title"></span></span>
+  <span><h4>Descrption</h4><div id="description"></div></span>
+  <div class="summary-contain">
+    <% if can? :update, @forum %>
+    <%= link_to 'Edit', edit_subject_chapter_topic_forum_path(@subject_id, @chapter_id, @topic_id, @forum), :remote => :true, :class => 'btn btn-primary ' %>
+    <% end %>
+    <%= link_to 'Back', "/subject/#{@subject_id}/chapter/#{@chapter_id}/topic/#{@topic_id}/forums", :remote => :true, :class => 'btn btn-primary ' %>
+  </div>
+
+<div id="show_posts">
+  <script>
+    jQuery(function($) {
+    $.get("<%= "/subjects/#{@subject_id}/chapters/#{@chapter_id}/topics/#{@topic_id}/forums/#{@forum.id}/posts" %>");
+    });
+  </script>
+</div>
+
+</div>

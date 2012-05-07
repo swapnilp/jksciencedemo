@@ -1,0 +1,31 @@
+<div id="profile">
+  <h2>Edit Profile</h2>
+<%= form_for @student, :url => profile_path(@student), :method => :put, :remote => true,  :html => { :class => "form-horizontal"} do |f| %>
+
+<%- if @student.errors.any? %>
+<%- @student.errors.full_messages.each do |msg|%>
+<%= "#{msg}" %><br />
+<% end %>
+<% end %>
+
+<span class="row"><label>Address
+    <%= f.text_field :address, :class => 'input-large' %>
+</lable>
+</span>
+
+
+<span class="row"><label>phone_number
+    <%= f.text_field :phone_number %>
+</lable>
+</span>
+
+<span class="row"><label>standerd
+    <%= f.text_field :standerd %>
+</lable>
+</span>
+
+<%= f.submit "update", :class => 'btn btn-large' %>
+
+<% end %>
+<h2><span class="label label-info">Please Contact to Admin  for change Ramaining Information</span></h2>
+</div>

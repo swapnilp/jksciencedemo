@@ -1,0 +1,4 @@
+<div id="show_data">
+  <h2>Not attempt before <%= "#{Time.now + (@last_attempt * 60)}" %></h2>
+  
+</div>

@@ -1,0 +1,2 @@
+$('#myModal').modal('hide');
+$("#data_show").replaceWith("<%= escape_javascript(render(:partial => 'index'))%>");

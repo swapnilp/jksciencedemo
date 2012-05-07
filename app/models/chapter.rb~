@@ -1,0 +1,27 @@
+class Chapter < ActiveRecord::Base
+  attr_accessible :name, :subject_id, :chapter_number, :user_id
+
+  #validation
+  belongs_to :subject
+  belongs_to :user
+  has_many :topic
+  
+  #association
+  validates :user_id, :presence => true
+  validates :subject_id, :presence => true
+  validates :name, :presence => true
+  validates_associated :topic
+  
+  before_validation :validate_subject, :validate_user
+  
+  def validate_subject
+    errors.add(:subject_id, 'subject not presence') if Subject.find_by_id( self[:subject_id] ) == nil
+  end
+
+  #function validates user is exist or not in user table 
+  def validate_user
+    errors.add(:user_id, 'not presence') if User.find_by_id( self[:user_id] ) == nil
+  end
+
+
+end

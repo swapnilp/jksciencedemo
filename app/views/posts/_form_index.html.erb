@@ -1,0 +1,23 @@
+<div id="show_posts" class="span10">
+  <h2>Posts</h2>
+  <%- @posts.each_with_index do |post, index| %>
+  <div id=<%= "post_#{post.id}" %> class="summary-contain span10">
+    <hr />
+    <span class="span8"><%= "#{index + 1} "+"  #{post.post}" %></span>
+    <%- if current_user.role.name == "Admin" %>
+    <span class="span2"><%= link_to 'destroy', subject_chapter_topic_forum_post_path(@subject_id, @chapter_id, @topic_id, @forum_id, post.id), :method => :delete, :remote => :true %></span>
+    <%- end %>
+    <span class="pull-right">
+    <%= "\"#{post.user.email}\"  #{post.created_at}" %>
+    </span>
+  </div>
+  <%- end %>
+
+  <div id="new_post">
+    <script>
+      jQuery(function($) {
+      $.get("<%= "/subjects/#{@subject_id}/chapters/#{@chapter_id}/topics/#{@topic_id}/forums/#{@forum_id}/posts/new" %>");
+      });
+    </script>
+  </div>
+</div>

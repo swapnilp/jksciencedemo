@@ -1,0 +1,25 @@
+<div id="model_new" >
+  <%= form_for @admin, :method => :post, :remote => true, :html => { :class => "form-horizontal" } do |f| %>
+  <%- if @admin.errors.any? %>
+  <%- @admin.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+
+  <table width="100%" cellpadding="10">
+    <tr>
+      <td width="20%">Admin Name</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= f.text_field :phone_number %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+  </table>
+  <%= f.submit "Save", :id => 'save_admin_form', :class => 'btn' %>
+  <% end %>
+</div>

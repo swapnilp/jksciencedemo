@@ -1,0 +1,19 @@
+<div id=<%= "admin_edit_#{@admin.id}" %>>
+<%= form_for @admin, :url => admin_path(@admin), :method => :put, :remote => true,  :html => { :class => "form-horizontal", :id => "admin_subject" } do |f| %>
+<span class="row"><label>Admin Name
+    <%= f.text_field :name %>
+</lable>
+</span>
+<span class="row"><label>Phone number
+    <%= f.text_field :phone_number %>
+</lable>
+</span>
+<span class="row"><label>email
+    <%= f.text_field :email %>
+</lable>
+</span>
+<%= f.submit "update", :class => 'btn btn-large' %>
+
+<%= link_to "Back", admin_path(@admin), :class => "btn btn-large", :id => "edit_back_#{@admin.id}", :remote => true %>
+<% end %>
+</div>

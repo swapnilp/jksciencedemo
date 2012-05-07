@@ -1,0 +1,12 @@
+<div id="new_post" class="span10">
+  <h2>New Post</h2>
+  <%= form_for @post, :url => subject_chapter_topic_forum_posts_path(@subject_id, @chapter_id, @topic_id, @forum_id, @post), 
+  :method => :post, :remote => true, :html => { :class => "form-horizontal" , :id => "new_post_form"} do |f| %>
+  <span class="row"><label>Post
+      <%= f.text_field :post, :class => 'input-large' , :id => 'post_data_text' %>
+</lable>
+</span>
+
+<%= f.submit "Save", :class => 'btn', :id => 'submit_new_form' %>
+<% end %>
+</div>

@@ -1,0 +1,7 @@
+%p m in ruby
+= "#{current_user.class}" 
+= if current_user
+  %p m in user
+  = link_to "Log out", destroy_user_session_path, :method => :delete
+= if true
+  %p "asdasdasd"

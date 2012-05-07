@@ -1,0 +1,21 @@
+class Teacher < ActiveRecord::Base
+  attr_accessible :name, :phone_number, :address, :subject_id
+
+  #Association
+  belongs_to :subject
+  
+  #validation
+  validates :name, :presence => true
+  validates :phone_number, :presence => true
+  validates :address, :presence => true
+  validates :subject_id, :presence => true
+  validates :email, :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+    :message => "Email not valide" }
+
+  #callback
+  before_validation :validate_subject
+  
+  def validate_subject
+    errors.add(:subject_id, 'Subject not presence') if Subject.find_by_id( self[:subject_id] ) == nil
+  end
+end

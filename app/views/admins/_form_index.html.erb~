@@ -1,0 +1,31 @@
+<script type="text/javascript">
+  $(function(){
+  // Accordion
+  $("#accordion").accordion({ header: "h3" });
+  //hover states on the static widgets
+  $('#dialog_link, ul#icons li').hover(
+  function() { $(this).addClass('ui-state-hover'); },
+  function() { $(this).removeClass('ui-state-hover'); }
+  );
+  });
+</script>
+
+<div id="show_data" class="span10">
+  <h2 class="demoHeaders">Admins</h2>
+  <div id="accordion">
+    <div>
+      <%- @admin.each do |admin|%>
+      <h3>
+        <a href="#"><%= admin.name %></a>
+      </h3>
+      <% @admin = admin %>
+      <%= div_for(@admin) do %>
+      <%= render 'show' %>
+      <% end %>
+      <%- end %>
+    </div>
+  </div>
+  <div class="span3 summary_contain">
+    <a id="add_admin" data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Add Subject</a>
+  </div>
+</div>

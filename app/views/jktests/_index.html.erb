@@ -1,0 +1,42 @@
+<div id="show_jktest" class="span10">
+  <h2>Tests for <%= "#{@subject.name}" %> Subject</h2>
+  <table width="100%" class="table table-bordered">
+    <thead>
+      <tr>
+	<th>name</th>
+	<th>Subject Name</th>
+	<th>chapters</th>
+	<th>No Of Questions</th>
+	<th>Edit</th>
+	<th>Destroy</th>
+	<th>Test Question</th>
+      </tr>
+    </thead>
+    <%- @jktests.each do |jktest| %>
+    <tr>
+      <td>
+	<%= "#{jktest.name}" %>
+      </td>
+      <td>
+	<%= "#{jktest.subject.name}" %>
+      </td>
+      <td>
+	<%= "#{jktest.chapters_id}" %>
+      </td>
+      <td>
+	<%= "#{jktest.no_of_questions}" %>
+      </td>
+      <td>
+	<%= link_to "Edit", edit_subject_jktest_path(@subject,jktest), :remote => :true %>
+      </td>
+      <td>
+	<%= link_to "Destroy", subject_jktest_path(@subject,jktest), :method => :delete, :remote => :true, :confirm => "Are you sure?" %>
+      </td>
+      <td>
+	<%= link_to "Test Question", subject_jktest_testquestions_path(@subject,jktest), :method => :get, :remote => :true %>
+      </td>
+    </tr>
+    <%- end %>
+  </table>
+<%= link_to "Add Test", new_subject_jktest_path(@subject), :class=> "btn btn-primary", :remote => :true %>
+</div>

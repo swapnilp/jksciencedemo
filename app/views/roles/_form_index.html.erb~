@@ -1,0 +1,30 @@
+<script type="text/javascript">
+  $(function(){
+  // Accordion
+  $("#accordion").accordion({ header: "h3" });
+  //hover states on the static widgets
+  $('#dialog_link, ul#icons li').hover(
+  function() { $(this).addClass('ui-state-hover'); },
+  function() { $(this).removeClass('ui-state-hover'); }
+  );
+  });
+</script>
+<div id="show_data" class="span10">
+  <h2 class="demoHeaders">Roles</h2>
+  <div id="accordion">
+    <div>
+    <%- @role.each do |role|%>
+    <h3>
+      <a href="#"><%= role.name %></a>
+    </h3>
+    <% @role = role %>
+    <%= div_for(@role) do %>
+    <%= render 'show' %>
+    <% end %>
+    <%- end %>
+    </div>
+  </div>
+  <div class="span3 summary_contain">
+    <a id="add_role" data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Add Role</a>
+  </div>
+</div>

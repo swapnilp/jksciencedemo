@@ -1,0 +1,53 @@
+<script type="text/javascript">
+  $(function(){
+  $('#form_post').submit(function() {
+  document.getElementById('forum_dispaly').style.visibility = 'hidden'; 
+  document.getElementById('loading').style.visibility = 'visible'; 
+  });
+  });
+</script>
+<div class="span6" id="forums">
+  <div id="forum_dispaly">
+    <%- if defined? @forum%>
+    <h2><%= "#{@forum.title}" %></h2>
+    <h3><%= "#{@forum.description}" %></h3>
+    <% end %>
+    <%- if defined? @posts %>
+    <div id="show_posts">
+      <table widht="100%" class="table table-striped">
+	<thead>
+	  <tr>
+	    <th width="10%">Index</th>
+      	    <th>Posts</th>
+	  </tr>
+	</thead>
+	<%- @posts.each_with_index do |post, index|%>
+	<tr>
+	  <td><%= "#{index + 1}" %></td>
+	  <td><%= "#{post.post}" %></td>
+	</tr>
+	
+	<% end %>
+      </table>
+    </div>
+    <% end %>
+    
+    <div id="new_post" class="span6">
+      <h2>New Post</h2>
+      <%= form_tag("/forum/#{@forum.id}/post/#{@topic_id}/new", :remote => true, :method => :post, :id => 'form_post') do %>
+      <table>
+	<tr><td><input type="checkbox" name="email"> Send Email to teacher</td></tr>
+	<tr><td><input type="checkbox" name="add_post"> Add to forum</td></tr>
+	<tr><td>Post</td></tr>
+	<tr><td><%= text_area_tag 'post', nil, :placeholder => 'Enter Post/Email here...', :rows => 6, :class => 'input-xlarge'  %></td> </tr>
+	<tr><td><%= submit_tag "Send", :class => 'btn', :id => 'submit_new_form' %></td></tr>
+      </table>
+      <%- end %>
+    </div>
+  </div>
+  <div id="loading" class="loading_visible" style="visibility:hidden">
+    <%= image_tag "Loading.gif" %>
+
+  </div>
+</div>
+

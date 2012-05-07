@@ -1,0 +1,11 @@
+<div id=<%= "admin_show_#{ @admin.id}" %> >
+  <div>
+    <span class="row"><%= "Admin Name    :      #{@admin.name}" %></span>
+    <span class="row"><%= "Phone number    :      #{@admin.phone_number}" %></span>
+    <span class="row"><%= "email    :      #{@admin.email}" %></span>
+  </div>
+  <div class="summary_contain">
+    <%= link_to "Edit", edit_admin_path(@admin), :class => "btn btn-large", :id => @admin.id, :remote => true %>
+    <%= link_to "Delete", admin_path(@admin), :method => :delete, :class => "btn btn-large",:remote => true, :confirm => "Are you sure?" %>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div id="show_data" class="span10">
+  <%= form_for @batch, :url => batch_path(@batch), :method => :put, :remote => true,  :html => { :class => "form-horizontal", :id => "edit_batch" } do |f| %>
+  <%- if @batch.errors.any? %>
+  <%- @batch.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %>
+  <% end %>
+  <% end %>
+  <table class="table" width="100%">
+    <tr>
+      <td>Description</td>
+      <td><%= f.text_field :description, :class => 'input-large' %></td>
+    </tr>
+    <tr>
+      <td>Start Date</td>
+      <td><%= f.text_field :start_date %></td>
+    </tr>
+    <tr>
+      <td>End Date</td>
+      <td><%= f.text_field :end_date %></td>
+    </tr>
+    <tr>
+      <td>Group</td>
+      <td><%= f.text_field :group %></td>
+    </tr>
+    <tr>
+      <td>Incharge</td>
+      <td><%= f.text_field :incharge %></td>
+    </tr>
+  </table>
+  <%= f.submit "update", :class => 'btn btn-large' %>
+
+  <%= link_to "Back", batch_path(@batch), :class => "btn btn-large", :id => "edit_back_#{@batch.id}", :remote => true %>
+  <% end %>
+</div>

@@ -1,0 +1,3 @@
+$('#myModal').modal('show')
+$('#model_heading').raplaceWith("<h3 id='model_heading'>Edit Subject</h3>")
+$('#model_new').replaceWith("<%= escape_javascript(render(:partial => 'form_edit'))%>")

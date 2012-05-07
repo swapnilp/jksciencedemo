@@ -1,0 +1,2 @@
+$('#myModal').modal('hide');
+$("#index_role").replaceWith("<%= escape_javascript(render(:partial => 'form_index'))%>");

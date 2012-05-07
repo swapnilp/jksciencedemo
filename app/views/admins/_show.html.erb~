@@ -1,0 +1,9 @@
+<div id=<%= "subject_show_#{ @subject.id}" %> >
+<div>
+  <span class="row"><%= "Subject Name    :      #{@subject.name}" %></span>
+</div>
+<div class="summary_contain">
+  <%= link_to "Edit", edit_subject_path(@subject), :class => "btn btn-large", :id => @subject.id, :remote => true %>
+  <%= link_to "Delete", subject_path(@subject), :method => :delete, :class => "btn btn-large",:remote => true, :confirm => "Are you sure?" %>
+</div>
+</div>

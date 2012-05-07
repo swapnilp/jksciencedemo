@@ -1,0 +1,35 @@
+<div id="model_new">
+  <script type="text/javascript">
+    translateOnLoad=false;
+    function display() {
+    var str = document.getElementById("inputText").value;
+    var outnode = document.getElementById("outputNode");
+    var n = outnode.childNodes.length;
+    for (var i=0; i<n; i++)
+                       outnode.removeChild(outnode.firstChild);
+                       outnode.appendChild(document.createTextNode(str));
+                       AMprocessNode(outnode);
+                       }
+                       </script>
+
+  <%= form_for @forum, :url => subject_chapter_topic_forum_path(@subject_id, @chapter_id, @topic_id, @forum), :method => :put, :remote => true do |f| %>
+      <%- if @forum.errors.any? %>
+      <%- @forum.errors.full_messages.each do |msg|%>
+      <%= "#{msg}" %><br />
+      <% end %>
+      <% end %>
+      <span class="row"><label class="control-label">Title
+          <%= f.text_area :title, :rows => 3, :class => 'span6' %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Description
+    <%= f.text_area :description, :rows => 3, :class => 'span6', :id => 'inputText', :onkeyup => 'display()' %>
+</lable>
+</span>
+<p>
+<div id="outputNode"></div>
+</p>
+<%= f.submit "Update", :class => 'btn btn-large' %>
+<% end %>
+</div>

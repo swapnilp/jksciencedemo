@@ -1,0 +1,20 @@
+<script>
+  $(function(){
+  $('#user_employee_id').change(function() {
+  var index = document.getElementById("user_employee_id").selectedIndex
+  
+  });
+  });
+</script>
+<div="model_new">
+  <%= form_for @user, :url => users_path(@user), :method => :post, :remote => true, :html => { :class => "form-horizontal" } do |f| %>
+  <span class="row"><label>Student
+      <%= f.select( "employee_id", @students.collect {|r|  [r.name + "  -  "+r.email , r.id]  }) %>
+</lable>
+</span>
+
+
+<%= f.submit "Save" , :class => 'btn' %>
+<% end %>
+</div>
+

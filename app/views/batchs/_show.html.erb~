@@ -1,0 +1,15 @@
+<div id=<%= "batch_show_#{ @batch.id}" %> >
+<div>
+  <span class="row"><%= "user_id           :      #{@batch.user_id}" %></span>
+  <span class="row"><%= "description       :      #{@batch.description}" %></span>
+  <span class="row"><%= "start_date        :      #{@batch.start_date}" %></span>
+  <span class="row"><%= "end_date          :      #{@batch.end_date}" %></span>
+  <span class="row"><%= "group             :      #{@batch.group}" %></span>
+  <span class="row"><%= "incharge          :      #{@batch.incharge}" %></span>
+
+</div>
+<div class="summary_contain">
+  <%= link_to "Edit", edit_batch_path(@batch), :class => "btn btn-large", :id => @batch.id, :remote => true %>
+  <%= link_to "Delete", batch_path(@batch), :method => :delete, :class => "btn btn-large", :id => "delete_#{batch_id}" :remote => true, :confirm => "Are you sure?" %>
+</div>
+</div>

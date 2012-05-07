@@ -1,0 +1,2 @@
+class Solvedtest < ActiveRecord::Base
+end

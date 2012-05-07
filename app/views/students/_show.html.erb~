@@ -1,0 +1,15 @@
+<div id=<%= "student_show_#{ @student.id}" %> >
+<div>
+  <span class="row"><%= "Email           :      #{@student.email}" %></span>
+  <span class="row"><%= "Address         :      #{@student.address}" %></span>
+  <span class="row"><%= "phone_number    :      #{@student.phone_number}" %></span>
+  <span class="row"><%= "group           :      #{@student.group}" %></span>
+  <span class="row"><%= "standerd        :      #{@student.standerd}" %></span>
+  <span class="row"><%= "ssc_marks       :      #{@student.ssc_marks}" %></span>
+  <span class="row"><%= "parent_contact  :      #{@student.parent_contact}" %></span>
+</div>
+<div class="summary_contain">
+  <%= link_to "Edit", edit_student_path(@student), :class => "btn btn-large", :id => @student.id, :remote => true %>
+  <%= link_to "Delete", student_path(@student), :method => :delete, :class => "btn btn-large", :id => @student.id, :remote => true, :confirm => "Are you sure?" %>
+</div>
+</div>

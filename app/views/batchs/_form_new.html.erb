@@ -1,0 +1,33 @@
+<div id="model_new">
+  <%= form_for @batch, :url => batchs_path(@batch), :method => :post, :remote => true, :html => { :class => "form-horizontal", :id => "new_batch" } do |f| %>
+
+  <%- if @batch.errors.any? %>
+  <%- @batch.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+<table width="100%" cellpadding="10">
+    <tr>
+      <td>Description</td>
+      <td><%= f.text_field :description, :class => 'input-large' %></td>
+    </tr>
+    <tr>
+      <td>Start Date</td>
+      <td><%= f.text_field :start_date %>(YYYY-mm-dd)</td>
+    </tr>
+    <tr>
+      <td>End Date</td>
+      <td><%= f.text_field :end_date %>(YYYY-mm-dd)</td>
+    </tr>
+    <tr>
+      <td>Group</td>
+      <td><%= f.text_field :group %></td>
+    </tr>
+    <tr>
+      <td>Incharge</td>
+      <td><%= f.text_field :incharge %></td>
+    </tr>
+  </table>
+  <%= f.submit "Save", :id => 'save_batch_form', :class => 'btn' %>
+  <% end %>
+</div>

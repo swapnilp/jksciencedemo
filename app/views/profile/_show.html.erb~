@@ -1,0 +1,24 @@
+<div id="show_data" class="span10">
+  
+  <div id="profile">
+    <h2>Profile</h2>
+    <span><%= "Name  - #{@student.name}" %></span><br />
+    <span><%= "Address  - #{@student.address}" %></span><br />
+    <span><%= "Phone Number  - #{@student.phone_number}" %></span><br />
+    <span><%= "Group  - #{@student.group}" %></span><br />
+    <span><%= "Std  - #{@student.standerd}" %></span><br />
+    <span><%= "Email  - #{@student.email}" %></span><br />
+    <span><%= "parent Contact  - #{@student.parent_contact}" %></span><br />
+  </div>
+  <div id="batches">
+    <h2>Batche Information</h2>
+    <%- @batchs.each_with_index do |batch, index| %>
+    <span><%= "#{index + 1 }" %></span>
+    <span><%= "#{batch.description}" %></span><br />
+    <% end %>
+  </div>
+  <div id="result">
+    <h2>Result</h2>
+  </div>
+  
+</div>

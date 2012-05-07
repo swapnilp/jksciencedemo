@@ -1,0 +1,2 @@
+module BatchstudentsHelper
+end

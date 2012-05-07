@@ -1,0 +1,14 @@
+<script>
+jQuery(function($) {
+  $("#add_subject").click(function() {
+  $('#myModal').modal('show');
+    $.get('/subjects/new');
+    $("#modal_heading").replaceWith("<h3>New Subject</h3>");
+  });
+})
+</script>
+<h2 class="demoHeaders">Subjects</h2>
+<%= render 'form_index' %>
+<div class="span3 summary_contain">
+  <a id="add_subject" class="btn btn-primary btn-large">Add Subject</a>
+</div>

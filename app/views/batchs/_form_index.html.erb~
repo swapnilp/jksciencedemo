@@ -1,0 +1,32 @@
+<script type="text/javascript">
+  $(function(){
+  // Accordion
+  $("#accordion").accordion({ header: "h3" });
+  //hover states on the static widgets
+  $('#dialog_link, ul#icons li').hover(
+  function() { $(this).addClass('ui-state-hover'); },
+  function() { $(this).removeClass('ui-state-hover'); }
+  );
+  });
+</script>
+<div id="show_data" class="span10">
+  <h2 class="demoHeaders">Batchs</h2>
+  <div id="accordion">
+    <div>
+      <%- @batchs.each do |batch|%>
+      <h3>
+        <a href="#"><%= batch.id %></a>
+      </h3>
+      <% @batch = batch %>
+      <%= div_for(@batch) do %>
+      <%= render 'show' %>
+      <%= link_to 'Batch Student', batch_batchstudents_path(@batch), :class => 'btn btn-primary ', :remote => true%>
+      <%= link_to 'Batch Test', batch_batchtests_path(), :class => 'btn btn-primary ', :remote => true%>
+      <% end %>
+      <%- end %>
+    </div>
+  </div>
+  <div class="span3 summary_contain">
+    <%= link_to "Add Batch", new_batch_path, :class => "btn btn-primary btn-large", :remote => true %>
+  </div>
+</div>

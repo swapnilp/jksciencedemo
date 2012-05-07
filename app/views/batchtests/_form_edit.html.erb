@@ -1,0 +1,30 @@
+<script>
+  $(function() {
+  $( "#start_test_date" ).datepicker({minDate: 0, maxDate: "+8M", dateFormat : "dd/mm/yy"});
+  $( "#end_test_date" ).datepicker({ minDate: 0, maxDate: "+8M", dateFormat : "dd/mm/yy" });
+  });
+</script>
+
+
+<%= form_for @batchtest, :url => batch_batchtest_path(@batch_id, @batchtest) , :method => :put, :remote => :true do |f|%>
+<span class="row"><label>Test Name
+    <%= f.select "jktest_id", options_from_collection_for_select(@jktests, "id", "name") %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Start Test Date
+    <%= f.text_field :start_test_date, :class => 'input-large', :id => 'start_test_date'%>
+</lable>
+
+<span class="row"><label class="control-label">End Test Date
+    <%= f.text_field :end_test_date, :class => 'input-large', :id => 'end_test_date'%>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Attempts
+    <%= f.text_field :attempt, :class => 'input-large' %>
+</lable>
+</span>
+
+<%= f.submit "Save", :class => 'btn' %>
+<%- end %>

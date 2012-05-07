@@ -1,0 +1,29 @@
+<div id=<%= "chapter_#{@chapter_id}" %>>
+  <table width="100%" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Topic Name</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+        <th>Add Questions</th>
+      </tr>
+    </thead>
+    <%- @topics.each_with_index do |topic,index| %>
+    <tr>
+      <td><%= "#{index+1}" %></td>
+      <td><%= topic.name %></td>
+      <td><%= link_to 'Edit', edit_subject_chapter_topic_path(@subject_id, @chapter_id, topic), :remote => true %></td>
+      <td><%= link_to 'Destroy', subject_chapter_topic_path(@subject_id, @chapter_id, topic), confirm: 'Are you sure?', method: :delete, :remote => true %></td>
+      <td><%= link_to 'Add Question', subject_chapter_topic_questions_path(@subject_id, @chapter_id, topic), method: :get, :remote => true %></td>
+    </tr>
+    <% end %>
+  </table>
+  
+  <div class="span3 summary_contain" width="100%">
+    <%- if current_user.role.name == "Admin" %>
+    <%= link_to "Add Topic", new_subject_chapter_topic_path(@subject_id, @chapter_id), :class => "btn btn-primary btn-large", :remote => true %>
+    <% end %>
+    <%= link_to "back", subject_chapters_path(@subject_id), :class => "btn btn-primary btn-large", :remote => :true %>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<%= form_tag("/batchs/#{@batch_id}/batchstudents/add_batch_student", :remote => :true) do  -%>
+<%= select_tag "students", options_from_collection_for_select(@questions, "id", "question"), :multiple => true, :size => 30, :class => 'span6' %>
+<div><%= submit_tag 'Save' %></div>
+<% end -%>

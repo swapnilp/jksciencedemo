@@ -1,0 +1,48 @@
+body{margin:0; padding:0;}
+.wrapper{width:932px; margin:0 auto; padding:0 20px 25px;}
+.top-strip{width:100%; height:14px; background:#d46500;}
+.header{height:135px; float:left; width:932px; padding:21px 0 0 0;}
+.logo{width:165px; height:135px; float:left;}
+.navi-wrapper{width:390px; height:135px; float:right;}
+.search-bg{width:292px; height:34px; float:right; background:#ececec; padding:10px 0 0 15px; margin-top:35px; border-radius:5px; -moz-border-radius:5px;}
+.search-text{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; line-height:20px; color:#4c4c4c; float:left;}
+.go-btn{width:25px; float:left;}
+.search-input{float:left; border:none; width:200px; height:19px; margin-left:5px;}
+.navi-bg{background:#f5f5f5; width:390px; height:45px; float:right; margin-top:20px;  border-radius:5px; -moz-border-radius:5px;}
+.navi-bg ul{margin:0; padding:0; list-style:none; line-height:45px}
+.navi-bg ul li{float:left; font-family:Arial, Helvetica, sans-serif; font-size:13px;}
+.navi-bg ul li a{text-decoration:none; color:#585858; float:left; padding:0 15px 0 ;}
+.navi-bg ul li a:hover{ background:#d40d00; color:#FFFFFF; float:left; border-radius:5px; -moz-border-radius:5px;}
+.banner{width:921px; float:left; margin-left:6px; margin-top:20px;}
+.box-one{border:solid 1px #c1c1c1; width:225px; margin:5px 3px 0 3px; float:left; padding:0 0 20px 0; background:url(../images/box-bg.jpg) repeat-x #ebebeb; min-height:285px;}
+.box-one h3{font-family:"Myriad Pro", Arial, Helvetica, sans-serif; font-size:18px; float:left; color:#090909; margin:0; padding:0 0 0 13px; font-weight:normal; line-height:30px;}
+.box-one-img{width:208px; height:81px; margin:4px 0 0 9px; float:left;}
+.box-one-text{width:218px; height:120px; overflow:hidden; margin:6px 3px 0; float:left; font-family:Arial, Helvetica, sans-serif; font-size:11px; text-align:justify; color:#101010; 
+	      line-height:25px; padding:0 0 25px 0}
+.read-more{color:#d40d00; width:215px; padding-right:10px; text-align:right; float:left; }
+.read-more a{color:#d40d00; text-decoration:none; font-family:Arial, Helvetica, sans-serif; font-size:11px; width:215px; float:left;}
+
+.box-two{border:solid 1px #c1c1c1; width:456px; margin:15px 3px 0 3px; padding-bottom:20px; float:left; background:url(../images/box-bg.jpg) repeat-x;}
+.box-two h3{font-family:"Myriad Pro", Arial, Helvetica, sans-serif; font-size:18px; float:left; color:#090909; margin:0; padding:0 0 0 13px;}
+.box-two-img{width:208px; height:81px; margin:4px 0 0 9px; float:left;}
+.box-two-text{width:436px; margin:6px 3px 0 13px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:12px; text-align:justify; color:#101010; line-height:18px;}
+.read-more-two{color:#d40d00; width:440px; padding-right:10px; text-align:right; float:left; }
+.read-more-two a{color:#d40d00; text-decoration:none; font-family:Arial, Helvetica, sans-serif; font-size:12px; width:440px; float:left;}
+.testmonials-img-one{width:157px; height:117px; float:left; margin:15px 0 0 5px;}
+
+.box-three{border:solid 1px #c1c1c1; width:295px; margin:15px 3px 0 3px; float:left; background:url(../images/box-bg.jpg) repeat-x;}
+.box-three h3{font-family:"Myriad Pro", Arial, Helvetica, sans-serif; font-size:18px; float:left; color:#090909; margin:0; padding:0 0 0 13px;}
+.box-three-img{width:208px; height:81px; margin:4px 0 0 9px; float:left;}
+.box-three-text{ background:url(../images/testi-one.jpg) no-repeat; padding:0 0 0 120px; width:160px; margin:6px 3px 0 13px; float:left; font-family:Arial, Helvetica, sans-serif; font-size:12px; 
+		 text-align:justify; color:#101010; line-height:17px;}
+.read-more-three{color:#d40d00; width:140px; padding-left:10px; text-align:left; float:left; margin:15px 0 0 10px ; padding-bottom:20px; }
+.read-more-three a{color:#d40d00; text-decoration:none; font-family:Arial, Helvetica, sans-serif; font-weight:bold; font-style:italic; font-size:13px; width:140px; float:left;}
+.footer-wrapper{background:#323232; width:100%; float:left; margin-top:15px; padding-bottom:4px;}
+.footer-navi{width:972px; height:35px; margin:0 auto;}
+.footer-navi ul{width:500px; margin:0; padding:0; list-style:none;}
+.footer-navi ul li{float:left; padding:0 5px; color:#CCCCCC; margin-top:5px;}
+.footer-navi ul li a{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#CCCCCC; text-decoration:none;}
+.footer-navi ul li a:hover{text-decoration:underline;}
+.facebook{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF; float:right; margin-top:5px; line-height:20px;}
+.twitter{padding:3px 0 0 4px;}
+.facebook a{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#FFFFFF; text-decoration:none;}

@@ -1,0 +1,36 @@
+<script type="text/javascript">
+  $(function(){
+  // Accordion
+  $("#accordion").accordion({ header: "h3" });
+  //hover states on the static widgets
+  $('#dialog_link, ul#icons li').hover(
+  function() { $(this).addClass('ui-state-hover'); },
+  function() { $(this).removeClass('ui-state-hover'); }
+  );
+  });
+</script>
+
+<div id="show_data" class="span10">
+  <h2 class="demoHeaders">Subjects</h2>
+  <div id="accordion">
+    <div>
+      <%- @subjects.each do |subject|%>
+      <h3>
+        <a href="#"><%= subject.name %></a>
+      </h3>
+      <div>
+	<div id=<%= "subject_#{subject.id}" %>>
+	  <script>
+	    jQuery(function($) {
+	    $.get("<%= "/subjects/#{subject.id}/chapters" %>");
+            });
+	  </script>
+	</div>
+      </div>
+      <%- end %>
+    </div>
+  </div>
+  <div class="span3 summary_contain">
+    <a id="add_subject" class="btn btn-primary btn-large">Add Subject</a>
+  </div>
+</div>

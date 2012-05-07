@@ -1,0 +1,51 @@
+<script type="text/javascript">
+translateOnLoad=false;
+function display(str, location) {
+  var outnode = document.getElementById(location);
+  var n = outnode.childNodes.length;
+  for (var i=0; i<n; i++)
+    outnode.removeChild(outnode.firstChild);
+  outnode.appendChild(document.createTextNode(str));
+  AMprocessNode(outnode);
+}
+</script>
+
+<h2>Your Result are <%= "#{@marks}" %></h2> 
+
+<div id="test_question_with_answer">
+  <%- @solvedtestquestions.each_with_index do |testquestion, index| %>
+  <div class="summary_contain span10">
+    <h3><span><%= "#{index + 1} )" %></span>
+    <span id=<%= "question_#{index + 1}" %>></span></h3>
+    A ) <span id=<%= "optiona_#{index + 1}" %>></span><br />
+    B ) <span id=<%= "optionb_#{index + 1}" %>></span><br />
+    C ) <span id=<%= "optionc_#{index + 1}" %>></span><br />
+    D ) <span id=<%= "optiond_#{index + 1}" %>></span><br />
+    
+    <script>
+      display("<%= "#{testquestion.question.question}" %>", "<%= "question_#{index + 1}" %>");
+      display("<%= "#{testquestion.question.option_a}" %>", "<%= "optiona_#{index + 1}" %>");
+      display("<%= "#{testquestion.question.option_b}" %>", "<%= "optionb_#{index + 1}" %>");
+      display("<%= "#{testquestion.question.option_c}" %>", "<%= "optionc_#{index + 1}" %>");
+      display("<%= "#{testquestion.question.option_d}" %>", "<%= "optiond_#{index + 1}" %>");
+    </script>
+    <script type="text/javascript">
+        $(function(){
+	<%- if defined? @solvedtest_answers %>
+	  <%-  if @solvedtest_answers[testquestion.question_id].nil? %>
+            $('<%= "#option#{testquestion.question.answer}_#{index + 1}" %>').attr("class", "label");
+	  <%- elsif @solvedtest_answers[testquestion.question_id] == testquestion.question.answer %>
+	    $('<%= "#option#{testquestion.question.answer}_#{index + 1}" %>').attr("class", "label label-success");
+	  <%- else %>
+	    $('<%= "#option#{testquestion.question.answer}_#{index + 1}" %>').attr("class", "label label-success");
+     	    $('<%= "#option#{@solvedtest_answers[testquestion.question_id]}_#{index + 1}" %>').attr("class", "label label-important");
+	  <% end %>
+	<%- else %>
+	  $('<%= "#option#{testquestion.question.answer}_#{index + 1}" %>').attr("class", "label label-success");
+	<% end %>
+	
+        });
+      </script>
+  </div>
+  <% end %>
+</div>

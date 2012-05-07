@@ -1,0 +1,29 @@
+<div id="show_data" class="span10">
+  <table width="100%" class="table table-striped">
+    <thead>
+      <tr>
+	<th>Index</th>
+	<th>Batch</th>
+	<th>Test Name</th>
+	<th>Last Date</th>
+	<th>Total Attempts</th>
+	<th>Start Test</th>
+      </tr>
+    </thead>
+    <%- @batchtests.each_with_index do |batchtest, index| %>
+    <tr>
+      <td><%= "#{index + 1}" %></td>
+      <td><%= "#{batchtest.batch_id}" %></td>
+      <td><%= "#{batchtest.jktest.name}" %></td>
+      <td><%= "#{batchtest.end_test_date}" %></td>
+      <td><%= "#{batchtest.attempt}" %></td>
+      <td>
+	<%- if Testattempt.find(:all, :conditions => { :batchtest_id => batchtest.id, :student_id => @student_id}).count <= batchtest.attempt %>
+	  <%= link_to 'Start Test', "/batch_test/#{batchtest.id}/student/#{@student_id}/jktest/#{batchtest.jktest_id}" %>
+	  <%- end %>
+      </td>
+    </tr>
+    <%- end %> 
+  </table>
+  
+</div>

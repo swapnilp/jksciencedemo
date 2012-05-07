@@ -1,0 +1,35 @@
+<div id="show_data" class="span10">
+  <%= form_for @teacher, :url => teacher_path(@teacher), :method => :put, :remote => true,  :html => { :class => "form-horizontal", :id => "edit_teacher" } do |f| %>
+  <%- if @teacher.errors.any? %>
+  <%- @teacher.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+  <table width="40%" class="table">
+    <tr>
+      <td width="30%">Name</td>
+      <td><%= f.text_field :name, :class => 'input-large'%></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= f.text_field :phone_number, :class => 'input-large' %></td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td>Subject</td>
+      <td><%= f.text_field :subject_id %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= @teacher.email %></td>
+    </tr>
+  </table>
+  
+  <%= f.submit "update", :class => 'btn btn-large' %>
+  
+  <%= link_to "Back", teacher_path(@teacher), :class => "btn btn-large", :id => "edit_back_#{@teacher.id}", :remote => true %>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<script>
+jQuery(function($) {
+  $('#myModal').on('shown', function () {
+  $.get("/students/new");
+  $("#modal_heading").replaceWith("<h3>New Student</h3>");
+  });
+})
+</script>
+<%= render 'form_index' %>
+

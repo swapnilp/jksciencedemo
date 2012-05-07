@@ -1,0 +1,1 @@
+$("#model_new").replaceWith("<%= escape_javascript(render(:partial => 'form_new'))%>");

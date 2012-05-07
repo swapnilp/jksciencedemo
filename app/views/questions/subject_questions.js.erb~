@@ -1,0 +1,1 @@
+$('#filtered_question').replaceWith("<div id='filtered_question' class='span10'><%= escape_javascript(render(:partial => 'index')) %></div>")

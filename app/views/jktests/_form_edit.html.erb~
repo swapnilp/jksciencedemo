@@ -1,0 +1,19 @@
+<%= form_for @jktest, :url => subject_jktest_path(@subject_id, @jktest), :method => :put, :remote => true do |f|%>
+<span class="row"><label class="control-label">Name
+    <%= f.text_field :name, :class => 'input-large'%>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Chapters Id
+    <%= f.text_field :chapters_id, :class => 'input-large'%>
+</lable>
+</span>
+
+<span class="row"><label class="control-label"> No Of Questions
+    <%= f.text_field :no_of_questions, :class => 'input-large'%>
+</lable>
+</span>
+
+<%= f.submit "create", :class => 'btn btn-large' %>
+<% end %>
+

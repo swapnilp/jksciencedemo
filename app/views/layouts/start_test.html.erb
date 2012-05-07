@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jkscience</title>
+    <%= stylesheet_link_tag  "application", :media => "all", :debug => :true %>
+    <%= stylesheet_link_tag :href => '/stylesheets/bootstrap.css', :type => "text/css" %>
+    <%= stylesheet_link_tag :href => '/stylesheets/jquery-ui-1.8.18.custom.css', :type => "text/css" %>
+
+    <%= javascript_include_tag "application", "jquery-1.7.1.min", "jquery-ui-1.8.18.custom.min", "bootstrap-modal", "bootstrap", "ASCIIMathML" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <%- if defined? @testquestions %>
+      <div class="row-fluid">
+	<div class="span2">
+	  asd
+	  <div id="topLeft" class="span2">
+	    <span>Questions</span><br />
+	    <%- for i in 1..@testquestions.count %>
+	    <a id=<%= "question_link_#{i}" %> href=<%= "#question_#{i}" %> class="btn"><%= "#{i}" %></a>
+	    <% end %>
+	  </div>
+	</div>
+	<div class="span10">
+	  <%= yield %>
+	</div>
+      </div>
+      <%- else %>
+      <div>
+	<%= yield %>
+      </div>
+      <% end %>
+    </div>
+  </body>
+</html>

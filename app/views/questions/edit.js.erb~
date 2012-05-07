@@ -1,0 +1,2 @@
+$('#model_new').replaceWith("<%= escape_javascript(render(:partial => 'show'))%>");
+$("#modal_heading").replaceWith("<h3 id='modal_heading'>Question edit</h3>");

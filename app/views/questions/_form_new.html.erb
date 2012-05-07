@@ -1,0 +1,55 @@
+<div id="model_new">
+  <script type="text/javascript">
+    translateOnLoad=false;
+    function display() {
+    var str = document.getElementById("inputText").value;
+    var outnode = document.getElementById("outputNode");
+    var n = outnode.childNodes.length;
+    for (var i=0; i<n; i++)
+		       outnode.removeChild(outnode.firstChild);
+		       outnode.appendChild(document.createTextNode(str));
+		       AMprocessNode(outnode);
+		       }
+		       </script>
+  
+  <%= form_for @question, :url => subject_chapter_topic_questions_path(@subject_id, @chapter_id, @topic_id, @question), :method => :post, :remote => true do |f| %>
+      <%- if @question.errors.any? %>
+      <%- @question.errors.full_messages.each do |msg|%>
+      <%= "#{msg}" %><br />
+      <% end %>
+      <% end %>
+      <span class="row"><label class="control-label">Question
+	  <%= f.text_area :question, :rows => 3, :class => 'span6', :id => 'inputText', :onkeyup => 'display()' %>
+</lable>
+</span>
+<p>
+  <div id="outputNode"></div>
+</p>
+
+<span class="row"><label class="control-label">Option A
+    <%= f.text_area :option_a, :rows => 2, :class => 'span6', :id => 'inputText', :onkeyup => 'display()' %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Option B
+    <%= f.text_area :option_b, :rows => 2, :class => 'span6', :id => 'inputText', :onkeyup => 'display()' %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Option C
+    <%= f.text_area :option_c, :rows => 2, :class => 'span6', :id => 'inputText', :onkeyup => 'display()' %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Option D
+    <%= f.text_area :option_d, :rows => 2, :class => 'span6', :id => 'inputText', :onkeyup => 'display()' %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Answer
+    <%= f.select :answer, "<option>a</option><option>b</option><option>c</option><option>d</option>".html_safe %>
+</lable>
+</span>
+<%= f.submit "create", :class => 'btn btn-large' %>
+<% end %>
+</div>

@@ -1,0 +1,21 @@
+<div id="show_data" class="span10">
+  <table width="100%" class="table">
+    <tr>
+      <td width="20%">Admin Name</td>
+      <td><%= "#{@admin.name}" %></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td><%= "#{@admin.phone_number}" %></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= "#{@admin.email}" %></td>
+    </tr>
+  </table>
+  <div class="summary_contain">
+    <%= link_to "Edit", edit_admin_path(@admin), :class => "btn btn-large", :id => @admin.id, :remote => true %>
+    <%= link_to "Delete", admin_path(@admin), :method => :delete, :class => "btn btn-large",:remote => true, :confirm => "Are you sure?" %>
+    <%= link_to "Back", admins_path, :method => :get, :class => "btn btn-large",:remote => true %>
+  </div>
+</div>

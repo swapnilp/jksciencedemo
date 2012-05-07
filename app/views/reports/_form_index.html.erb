@@ -1,0 +1,30 @@
+<script>
+  $(function(){
+  $('#table_format').ddTableFilter()
+  });
+</script>
+
+<div id="show_data" class="span10">
+  <h2>Reports</h2>
+  <table id="table_format" width="100%" class="table table-striped">
+    <thead>
+      <tr>
+	<th>Index</th>
+	<th>Batch</th>
+	<th>Students</th>
+	<th>Jktest</th>
+	<th>Marks</th>
+      </tr>
+    </thead>
+    <%- @marks.each_with_index do |mark, index| %>
+    <tr>
+      <td><%= "#{index + 1}" %></td>
+      <td><%= "#{mark.batchtest.batch.description}" %></td>
+      <td><%= "#{mark.student.name}"%></td>
+      <td><%= "#{mark.batchtest.jktest.name}"%></td>
+      <td><%= "#{mark.mark}"%></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

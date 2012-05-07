@@ -1,0 +1,16 @@
+<div id="show_data" class="span10">
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      Select Subject
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <!-- dropdown menu links -->
+      <%- @subjects.each do |subject|%>
+      <li><%= link_to "#{subject.name}", subject_jktests_path(subject.id), :remote => :true %></li>
+      <%- end %>
+    </ul>
+  </div>
+  <div id="show_jktest" class="span10">
+  </div>
+</div>

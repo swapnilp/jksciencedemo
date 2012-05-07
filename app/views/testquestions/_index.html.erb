@@ -1,0 +1,26 @@
+<div id="show_data" class="span10">
+  <h2>Jktest   :- <%= "#{@jktest.name}" %></h2>
+  <table width="100%" class="table table-bordered">
+    <thead>
+      <tr>
+	<th>Index</th>
+	<th>Chapter</th>
+	<th>Topic</th>
+	<th>Question</th>
+	<th>Remove</th>
+      </tr>
+    </thead>
+    <%- @testquestions.each_with_index do |testquestion,index| %>
+    <tr>
+      <td><%= "#{index + 1}" %></td>
+      <td><%= "#{testquestion.question.topic.chapter.name}" %></td>
+      <td><%= "#{testquestion.question.topic.name}" %></td>
+      <td><%= "#{testquestion.question.question}" %></td>
+      <td><%= link_to 'Remove', subject_jktest_testquestion_path(@subject.id, @jktest.id, testquestion), :method => :delete, :remote => :true %></td>
+    </tr>
+    <% end %>
+  </table>
+  <div class="summary_contain">
+    <%= link_to 'Add Question', new_subject_jktest_testquestion_path(@subject.id, @jktest.id), :remote => :true, :class => 'btn btn-primary' %>
+  </div>
+</div>

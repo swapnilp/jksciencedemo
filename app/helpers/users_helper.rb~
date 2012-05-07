@@ -1,0 +1,6 @@
+module UsersHelper
+
+  def joint(name, email)
+    name + "  /  " + email
+  end
+end

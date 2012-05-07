@@ -1,0 +1,33 @@
+<script type="text/javascript">
+  <!--//   LIMIT MULTIPLE SELECTED OPTIONS SCRIPT || 01-21-2005   \\;
+      var selectedOptions = []; // Written by: WillyDuitt@hotmail.com \\;
+      function countSelected(select,maxNumber){
+      for(var i=0; i<select.options.length; i++){
+      if(select.options[i].selected && !new RegExp(i,'g').test(selectedOptions.toString())){
+      selectedOptions.push(i);
+      }
+      
+      if(!select.options[i].selected && new RegExp(i,'g').test(selectedOptions.toString())){
+      selectedOptions = selectedOptions.sort(function(a,b){return a-b});  
+      for(var j=0; j<selectedOptions.length; j++){
+      if(selectedOptions[j] == i){
+      selectedOptions.splice(j,1);
+      }
+      }
+      }
+      
+     if(selectedOptions.length > maxNumber){
+     alert('You may only choose '+maxNumber+' options!!');
+     select.options[i].selected = false;
+     selectedOptions.pop();
+     document.body.focus();
+     }  
+     }    
+     }
+     //-->
+</script>
+
+<%= form_tag("/subject/#{@subject_id}/jktest/#{@jktest.id}/add_test_questions", :remote => :true, :method => :post) do  -%>
+<%= select_tag "questions", options_from_collection_for_select(@questions, "id", "question"), :multiple => true, :size => 30, :class => 'span6', :onchange => "countSelected(this,#{@count})" %>
+<div><%= submit_tag 'Save' %></div>
+<% end -%>

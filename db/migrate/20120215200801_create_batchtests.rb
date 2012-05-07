@@ -1,0 +1,12 @@
+class CreateBatchtests < ActiveRecord::Migration
+  def change
+    create_table :batchtests do |t|
+      t.references :batch, :null => false
+      t.references :jktest, :null => false
+      t.date :start_test_date, :null => false
+      t.date :end_test_date, :null => false
+      t.integer :attempt, :null => false
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,25 @@
+<div id="show_data" class="span10">
+  <table width="100%" class="table table-bordered">
+    <thead>
+      <tr>
+        <th width="20%">Index</th>
+        <th width="80%">Question</th>
+      </tr>
+    </thead>
+    <%- @questions.each_with_index do |question,index| %>
+    <tr>
+      <td>
+	<%= "#{index}" %>
+      </td>
+      <td>
+	<%= link_to question.question, subject_chapter_topic_question(@subject_id, @chapter_id, @topic_id, question), :remote => :true %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+  <div class="summary_contain">
+    <%= link_to "Add Question", new_subject_chapter_topic_question_path(@subject_id, @chapter_id, @topic_id), :class => "btn btn-primary btn-large", :remote => true %>
+  </div>
+  
+</div>

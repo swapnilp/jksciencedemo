@@ -1,0 +1,26 @@
+<div id="model_new">
+  <%= form_for @jktest, :url => subject_jktest_path(@subject_id, @jktest), :method => :put, :remote => true do |f| %>
+  <%- if @jktest.errors.any? %>
+  <%- @jktest.errors.full_messages.each do |msg|%>
+  <%= "#{msg}" %><br />
+  <% end %>
+  <% end %>
+
+  <span class="row"><label class="control-label">Name
+      <%= f.text_field :name, :class => 'input-large' %>
+</lable>
+</span>
+
+<span class="row"><label class="control-label">Chapters Id
+    <%= f.text_field :chapters_id, :class => 'input-large'%>
+</lable>
+</span>
+
+<span class="row"><label class="control-label"> No Of Questions
+    <%= f.text_field :no_of_questions, :class => 'input-large'%>
+</lable>
+</span>
+
+<%= f.submit "Update", :class => 'btn btn-large' %>
+<% end %>
+</div>

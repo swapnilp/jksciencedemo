@@ -1,0 +1,2 @@
+class Testattempt < ActiveRecord::Base
+end

@@ -1,0 +1,12 @@
+class CreateJktests < ActiveRecord::Migration
+  def change
+    create_table :jktests do |t|
+      t.string :name, :null => false
+      t.references :subject,:null => false
+      t.references :user, :null => false
+      t.string :chapters_id, :null => false
+      t.integer :no_of_questions, :null => false
+      t.timestamps
+    end
+  end
+end

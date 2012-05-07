@@ -1,0 +1,61 @@
+class BatchsController < ApplicationController
+  load_resource
+  def index
+    @batchs = Batch.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def show
+    @batch = Batch.find(params[:id])
+  end
+
+  def new
+    respond_to do |format|
+      @batch = Batch.new
+      format.js # required or the controller will not respond to AJAX calls
+    end
+  end
+  
+  def create
+    @batch = Batch.new(params[:batch])
+    respond_to do |format|
+      if @batch.save
+        format.js { redirect_to :action => 'index' }
+      else
+        format.js { render :action => 'new' }
+      end
+    end
+  end
+  
+  def edit
+    @batch = Batch.find(params[:id])
+    respond_to do |format|
+      # format.html
+      format.js  # required or the controller will not respond to AJAX calls
+    end
+  end
+
+  def update
+    @batch = Batch.find(params[:id])
+    respond_to do |format|
+      if @batch.update_attributes(params[:batch])
+        format.html { redirect_to @batch, notice: 'Batch was successfully updated.' }
+        format.js {redirect_to :action => 'show'}
+      else
+        format.js { render :action => 'edit' }
+      end
+    end
+  end
+  
+  def destroy
+    respond_to do |format|
+      if Batch.find(params[:id]).destroy
+        format.js { redirect_to :action => 'index' }
+      end
+    end
+  end
+  
+end

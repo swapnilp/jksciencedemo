@@ -1,0 +1,30 @@
+<div id="show_data" class="span10">
+  <h2>Batch Test</h2>
+  <table width="100%" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>index</th>
+        <th>start date</th>
+        <th>end date</th>
+        <th>attempts</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+    <%- @batchtests.each_with_index do |batchtest,index| %>
+    <tr>
+      <td><%= "#{index+1}" %></td>
+      <td><%= "#{batchtest.start_test_date}" %></td>
+      <td><%= "#{batchtest.end_test_date}" %></td>
+      <td><%= "#{batchtest.attempt}" %></td>
+      <td><%= link_to 'Edit', edit_batch_batchtest_path(@batch_id, batchtest), method: :get, :remote => true %></td>
+      <td><%= link_to 'Destroy', batch_batchtest_path(@batch_id, batchtest), confirm: 'Are you sure?', method: :delete, :remote => true %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <div class="span3 summary_contain" width="100%">
+    <%= link_to "Add Test", new_batch_batchtest_path(@batch_id), :class => "btn btn-primary btn-large" , :remote => :true %>
+    <%= link_to "back", batchs_path(), :class => "btn btn-primary btn-large" , :remote => :true %>
+  </div>
+</div>

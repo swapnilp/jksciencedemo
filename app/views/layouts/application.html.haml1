@@ -1,0 +1,74 @@
+!!!
+%html
+  %head
+    %title Jkscience
+    = javascript_include_tag "application"
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+    :javascript
+      jQuery(function($) {
+      $('#myModal').on('hidden', function () {
+      $('#model_body').replaceWith("")
+      });
+      });
+        / if user is login script is user to clear the active css class to left hand piles
+    - if user_signed_in?
+      :javascript
+        function clear_link(link) {
+        document.getElementById('my_profile_link').className = '';
+         if ["Admin", "teacher"].include?(current_user.role.name)  
+        document.getElementById('subject_link').className = '';
+         if current_user.role.name == "Admin" 
+        document.getElementById('role_link').className = '';
+        document.getElementById('teacher_link').className = '';
+        document.getElementById('student_link').className = '';
+        document.getElementById('admin_link').className = '';
+        document.getElementById('user_link').className = '';
+        document.getElementById('batch_link').className = '';
+        document.getElementById('question_link').className = '';
+        document.getElementById('jktest_link').className = '';
+        document.getElementById('report_link').className = '';
+        document.getElementById('forum_link').className = '';
+         if current_user.role.name == "student" 
+        document.getElementById('today_test_link').className = '';
+        document.getElementById(link).className = 'active';
+        };
+      %body
+    .container-fluid
+      .row-fluid
+        - if user_signed_in?
+          .span2
+            %ul.nav.nav-pills.nav-stacked
+              %li#my_profile_link= link_to 'My Profile', profile_path(current_user.id) , :method => :get, :onclick => 'clear_link("my_profile_link")', :remote => :true
+              - if ["Admin", "teacher"].include?(current_user.role.name)
+                %li#subject_link.active= link_to 'Subject', subjects_path , :onclick => 'clear_link("subject_link")', :remote => :true
+                - if current_user.role.name == "Admin"
+                  %li#role_link= link_to 'Role', roles_path , :onclick => 'clear_link("role_link")', :remote => :true
+                  %li#teacher_link= link_to 'Teacher', teachers_path, :onclick => 'clear_link("teacher_link")', :remote => :true
+                  %li#student_link= link_to 'Student', students_path, :onclick => 'clear_link("student_link")', :remote => :true
+                  %li#admin_link= link_to 'Admin', admins_path, :onclick => 'clear_link("admin_link")', :remote => :true
+                  %li#user_link= link_to 'Users', users_path, :onclick => 'clear_link("user_link")', :remote => :true
+                %li#batch_link= link_to 'Batches', batchs_path ,:onclick => 'clear_link("batch_link")', :remote => :true
+                %li#question_link= link_to 'Questions', question_filter_question_path() ,:onclick => 'clear_link("question_link")', :remote => :true
+                %li#jktest_link= link_to 'Jktest', jktest_select_subject_path() ,:onclick => 'clear_link("jktest_link")', :remote => :true
+                %li#report_link= link_to 'Reports', reports_path() ,:onclick => 'clear_link("report_link")', :remote => :true
+              %li#forum_link= link_to 'Forum', subject_filter_forum_path ,:onclick => 'clear_link("forum_link")', :remote => :true
+              - if current_user.role.name == "student"
+                %li#today_test_link= link_to 'Todays Test', todays_test_path ,:onclick => 'clear_link("today_test_link")', :remote => :true
+            / Sidebar content
+        .span10
+          .span10
+            .offset10.pull-right
+              - if user_signed_in?
+                = current_user.email
+                = link_to "Log out", destroy_user_session_path, :method => :delete
+          / do not change the div id show data it is used to show data in right sideof page
+          #show_data.span10
+            = yield
+    / Used for model dialog  Do not change model_heading and model_body id's
+    #myModal.modal.hide
+      .modal-header
+        %a.close{"data-dismiss" => "modal"} ×
+        %h3#modal_heading
+      #model_body.modal-body
+        #model_new
